@@ -47,3 +47,7 @@ echo $resultado;
 echo "<br>";
 //Operador Spaceship
 echo 8<=>5;
+
+
+//Ejercicio 15 EN EL WORD, HACER A PAPEL.
+
