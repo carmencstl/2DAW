@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-
-function obtenerCookie(){
-    const cookies = document.cookie.split("; ");
-    for (const c of cookies) {
-        const [nombre, clave] = c.split("=");
-    }
-=======
 "use strict"
 /* Busco el valor de una cookie a traves de su clave. Si la encuentra
 la devuelve y sino devuelve false */
@@ -32,5 +24,4 @@ function crearCookie(clave, valor){
 /* Borrar una cookie caducandola */
 function borrarCookie(nombre) {
     document.cookie = `${nombre}=; max-age=0; path=/`;
->>>>>>> master
 }
