@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="La Plantilla en HTML5 para entrega de ejercicios" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+     <script defer src="./js/script.js"></script>
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
+    <title>Proyecto_Plantilla</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <h3>Plantilla para la entrega de ejercicios</h3>
+            <h4>Desarrollo web en entorno cliente</h4>
+            <h5>010-Proyecto_Plantilla</h5>
+        </div>
+        <div class="header-profile">
+            <img src="../../img/user.png" alt="Foto de perfil">
+        </div>
+    </header>
+
+    <nav>
+        <ul class="navbar">
+            <li><a href="https://www.w3schools.com/js/default.asp" target="_blank">w3schools</a></li>
+            <li><a href="https://es.javascript.info/js" target="_blank">javascript.info</a></li>
+            <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript" target="_blank">MDN</a></li>
+            <li class="dropdown">
+                <a href="#" aria-haspopup="true" class="privado">DOM</a>
+                <ul class="dropdown-content" aria-label="submenu">
+                    <li><a href="../DOM/ejer01/">Ejercicio 01</a></li>
+                    <li><a href="../DOM/ejer02/index.html">Ejercicio 02</a></li>
+                    <li><a href="../DOM/ejer03/index.html">Ejercicio 03</a></li>
+                    <li><a href="../DOM/ejer04/index.html">Ejercicio 04</a></li>
+                    <li><a href="../DOM/ejer07/index.html">Ejercicio 07</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" aria-haspopup="true" class="privado">Acceso</a>
+                <ul class="dropdown-content" aria-label="submenu">
+                    <li><a href="../Acceso/cookies/index.html">Cookies</a></li>
+                    <li><a href="../Acceso/mostrarOcultar/index.html">mostrarOcultar</a></li>
+                </ul>
+            </li>
+            <li class ="derecha">
+                <a  href="../registro/registro.html" id="Registro">Registro</a>
+                <a  href="../login/login.html" id="Login">Login</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <h3>Formulario de registro</h3>
+        <form>
+            <label>Nombre:</label>
+            <input id="clave" type="text" name="nombre" required>
+            <label>Contraseña:</label>
+            <input id="valor" type="password" name="password" required>
+            <button id="guardarCookie" type="button">Enviar</button>
+        </form>
+        <p id="mensaje"></p>
+    </main>
+    <footer>
+        <footer>
+            © Carmen Castillo Gaitán 2DAW ♡
+        </footer>
+    </footer>
+</body>
+
+</html>

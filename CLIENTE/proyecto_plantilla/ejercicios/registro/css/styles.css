@@ -1,0 +1,22 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* separación vertical */
+  border: 1px solid black;
+  padding: 25px;
+  border-radius: 3px;
+  box-shadow: 17px 10px 15px -10px rgba(0,0,0,0.1);
+  width: 25%;
+    align-items: center;
+}
+
+
+form input, button{
+    width: 75%;
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
