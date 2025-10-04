@@ -19,6 +19,8 @@
 </body>
 </html>
 <?php
+
+
     $numero = $_POST["numero"];
 
         $digitos = str_split((string)$numero);
