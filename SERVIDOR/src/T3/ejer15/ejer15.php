@@ -35,7 +35,7 @@ foreach ($valores as $valor => $puntos) {
 }
 
 shuffle($mazo);
-$mano = array_slice($mazo, 0, 10);
+$mano = array_slice($mazo, 0, 11);
 
 $suma = 0;
 echo " Mano de 10 cartas <br>";

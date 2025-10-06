@@ -24,7 +24,7 @@ for ($i = 0; $i < $filas; $i++) {
             $num = rand(100, 999);
         } while (in_array($num, $repetidos));
         $matriz[$i][$j] = $num;
-        $usados[] = $num;
+        $repetidos[] = $num;
     }
 }
 
@@ -48,7 +48,6 @@ for ($i = 0; $i < $filas; $i++) {
     echo "<tr>";
     for ($j = 0; $j < $columnas; $j++) {
         $color = "black";
-
         if ($i == $minFila && $j == $minCol) {
             $color = "blue";
         } elseif (($i - $j) == ($minFila - $minCol) || ($i + $j) == ($minFila + $minCol)) {
