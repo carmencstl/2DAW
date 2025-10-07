@@ -58,3 +58,14 @@ function quitaIzquierda(int $num, int $digitos): int
     return substr((string)$num,  $digitos);
 }
 
+function  pegaDerecha(int $num, int $digito): int
+{
+        return (string)$num . (string)$digito;
+}
+function  pegaIzquierda(int $num, int $digito): int
+{
+    return (string)$digito . (string)$num;
+}
+
+
+
