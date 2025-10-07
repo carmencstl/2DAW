@@ -1,5 +1,5 @@
 <?php
-
+include "../ejer06/ejer06.php";
 
 function generaArray(int $totalElementos, int $min, int $max): array
 {
@@ -40,6 +40,29 @@ function mediaArray(array $array): int | float
     return $suma / count($array);
 }
 
+function estaEnArray(int $i, array $array): bool
+{
+
+   return in_array($i, $array);
+}
 
 
-echo mediaArray($numeros);
+function posicionEnArray(int $i, array $array): bool | int
+{
+    return array_search($i, $array);
+}
+
+function rotarDerecha($array, $n) {
+    $longitud = count($array);
+    return array_merge(
+        array_slice($array, -$n),
+        array_slice($array, 0, $longitud - $n)
+    );
+}
+
+function rotarIzquierda($array, $n) {
+    return array_merge(
+        array_slice($array, $n),
+        array_slice($array, 0, $n)
+    );
+}
