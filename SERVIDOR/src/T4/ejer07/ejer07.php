@@ -47,7 +47,7 @@ function estaEnArray(int $i, array $array): bool
 }
 
 
-function posicionEnArray(int $i, array $array): bool | int
+function posicionEnArray(int $i, array $array): false | int
 {
     return array_search($i, $array);
 }
