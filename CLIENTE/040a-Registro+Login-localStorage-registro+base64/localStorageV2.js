@@ -45,13 +45,12 @@ btnLeer.addEventListener("click", () => {
 
 
 btnBorrar.addEventListener("click", () => {
-      let usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
     const clave = usuario.value;
-
     if (usuarios[clave]) {
         delete usuarios[clave];
         localStorage.setItem("usuarios", JSON.stringify(usuarios));
-        mensaje.innerHTML = `Usuario "${clave}" borrado.`;
+        mensaje.innerHTML = `Usuario "${clave}" borrado.`;  
     } else {
         mensaje.innerHTML = `Usuario "${clave}" no encontrado.`;
     }
