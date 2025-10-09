@@ -1,18 +1,38 @@
-"use strict"
+"use strict";
 
-const nombreUsuario = document.getElementById("usuario").value;
-const password = document.getElementById("password");
-const nombre = document.getElementById("nombre");
+function fileToDataURL(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onerror = () => reject(new Error("No se pudo leer el archivo"));
+        reader.onload = () => resolve(reader.result);
+        reader.readAsDataURL(file);
+    });
+}
 
-function registrarUsuario(user) {
-    if (!existeUsuario(user.usuario)) {
+async function registrarUsuario(usuario, password, nombre, file) {
+
+    if (!existeUsuario(usuario)) { 
         let usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
-        usuarios[user.usuario] = user;
+
+        if (!file) {
+            alert("Selecciona una imagen");
+        } else {
+            const imagenBase64 = await fileToDataURL(file);
+            usuarios[usuario] = {
+                usuario,
+                nombre,
+                password,
+                isLogged: false,
+                imagen: imagenBase64   
+            };
+        }
+
         localStorage.setItem("usuarios", JSON.stringify(usuarios));
         return true;
     }
     return false;
 }
+
 
 function existeUsuario(clave) {
     let usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
@@ -24,22 +44,38 @@ function existeUsuario(clave) {
     return false;
 }
 
+
 function credencialCorrecta(user, password) {
     let usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
-    for (let usuario in usuarios) {
-        if (user === usuarios[usuario].usuario && password === usuarios[usuario].password) {
-            return true;
+    return usuarios[user] && usuarios[user].password === password;
+}
+
+
+function obtenerLoggedUser() {
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
+    for (let clave in usuarios) {
+        if (usuarios[clave].isLogged === true) {
+            return usuarios[clave];
         }
     }
-    return false;
-
+    return null;
 }
 
-function isLogged(usuario){
-     let usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
-        if (usuarios[usuario].isLogged == true) {
-            return true;
-        }
+function isLogged() {
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
+    for (let clave in usuarios) {
+        if (usuarios[clave].isLogged === true) return true;
+    }
     return false;
 }
+
+cerrarSesion?.addEventListener("click", () => {
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
+    for (let clave in usuarios) {
+        usuarios[clave].isLogged = false;
+    }
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+    cambiarMenu();
+});
+
 
