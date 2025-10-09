@@ -1,27 +1,45 @@
 "use strict"
-/* Busco el valor de una cookie a traves de su clave. Si la encuentra
-la devuelve y sino devuelve false */
-function obtenerCookie(clave){
-    const cookies = document.cookie.split("; ");
-    for (const c of cookies) {
-        const [usuario, password] = c.split("=");
-        if (usuario === clave) return password;
 
-    }
-    return false;
-}
+const nombreUsuario = document.getElementById("usuario").value;
+const password = document.getElementById("password");
+const nombre = document.getElementById("nombre");
 
-/* Crea una cookie recibiendo la clave y el valor, antes
-comprueba que esa cookie no exite comprobando si existe la clave. */
-function crearCookie(clave, valor){
-    if(!obtenerCookie(clave)){
-        document.cookie = `${clave}=${valor}; path=/; secure; samesite=Strict`;
+function registrarUsuario(user) {
+    if (!existeUsuario(user.usuario)) {
+        let usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
+        usuarios[user.usuario] = user;
+        localStorage.setItem("usuarios", JSON.stringify(usuarios));
         return true;
     }
     return false;
 }
 
-/* Borrar una cookie caducandola */
-function borrarCookie(nombre) {
-    document.cookie = `${nombre}=; max-age=0; path=/`;
+function existeUsuario(clave) {
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
+    for (let usuario in usuarios) {
+        if (usuario === clave) {
+            return true;
+        }
+    }
+    return false;
 }
+
+function credencialCorrecta(user, password) {
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
+    for (let usuario in usuarios) {
+        if (user === usuarios[usuario].usuario && password === usuarios[usuario].password) {
+            return true;
+        }
+    }
+    return false;
+
+}
+
+function isLogged(usuario){
+     let usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
+        if (usuarios[usuario].isLogged == true) {
+            return true;
+        }
+    return false;
+}
+

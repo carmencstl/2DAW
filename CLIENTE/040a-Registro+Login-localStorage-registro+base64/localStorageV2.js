@@ -42,8 +42,6 @@ btnLeer.addEventListener("click", () => {
 });
 
 
-
-
 btnBorrar.addEventListener("click", () => {
     let usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
     const clave = usuario.value;

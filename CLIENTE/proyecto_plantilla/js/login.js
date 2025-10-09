@@ -1,19 +1,7 @@
-// archivo: js/login.js
 "use strict";
 
 const formulario = document.getElementById("formLogin");
 const mensaje = document.getElementById("mensaje");
-
-function credencialCorrecta(usuario, password) {
-    const cookies = document.cookie.split("; ");
-    for (const cookie of cookies) {
-        const [clave, valor] = cookie.split("=");
-        if (clave === usuario && valor === password) {
-            return true;
-        }
-    }
-    return false;
-}
 
 formulario.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -26,17 +14,20 @@ formulario.addEventListener("submit", (e) => {
         mensaje.textContent = "Por favor, rellena todos los campos.";
         return;
     }
-    
-    // Validar credenciales
-    if (credencialCorrecta(usuario, password)) {
-        document.cookie = `usuario=${usuario}; path=/`;
 
-        mensaje.textContent = `✅ Bienvenido, ${usuario}. Redirigiendo...`;
-        setTimeout(() => {
-            window.location.href = "index.html";
-        }, 1500);
+    if (credencialCorrecta(usuario, password)) {
+        let usuarios = JSON.parse(localStorage.getItem('usuarios')) || {};
+        if (usuarios[usuario]) {
+            usuarios[usuario].isLogged = true;
+            localStorage.setItem('usuarios', JSON.stringify(usuarios));
+            mensaje.textContent = `✅ Bienvenido, ${usuario}. Redirigiendo...`;
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 1500);
+            return true;
+        }
     } else {
         mensaje.textContent = "❌ Usuario o contraseña incorrectos.";
+        return false
     }
 });
-

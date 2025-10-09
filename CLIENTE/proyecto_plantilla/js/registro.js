@@ -9,6 +9,7 @@ formulario.addEventListener("submit", (e) => {
 
     const usuario = document.getElementById("usuario").value.trim();
     const password = document.getElementById("password").value.trim();
+    const nombre = document.getElementById("nombre").value.trim();
 
     // Validar campos
     if (!usuario || !password) {
@@ -16,14 +17,11 @@ formulario.addEventListener("submit", (e) => {
         return;
     }
 
-    // Guardar cookie: usuario=password
-    crearCookie(usuario, password) ? mensaje.textContent = `✅ Usuario ${usuario} registrado correctamente. Redirigiendo a login...` : mensaje.textContent = "❌ El usuario ya existe. Por favor, elige otro.";
-
-    // Opcional: redireccionar a login después de 2 segundos
+    const user = { nombre, usuario, password, isLogged: false };
+    registrarUsuario(user) ? mensaje.textContent = `✅ Usuario ${usuario} registrado correctamente. Redirigiendo a login...` : mensaje.textContent = "❌ El usuario ya existe. Por favor, elige otro.";
     
     setTimeout(() => {
       window.location.href = "login.html";
     }, 2000);
-    
+     
 });
-

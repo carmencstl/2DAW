@@ -37,12 +37,11 @@
   flex: 1 1 100%;
 }
 .cardFooter {
-  background: rgba(42, 90, 163, 0.05); /* azul suave */
+  background: rgba(42, 90, 163, 0.05); 
 }
 
 .cardFooter {
   background: rgba(42, 90, 163, 0.05);
-  /* azul suave */
   border-radius: 0 0 15px 15px;
   padding: 10px;
   text-align: center;
@@ -60,18 +59,6 @@
   text-decoration: underline;
 }
 
-
-/* Footer del ejercicio */
-.footer {
-  background:
-    linear-gradient(0deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.12)),
-    url(../../img/bglightblue.png) repeat;
-  text-align: center;
-  padding: 20px;
-  color: rgba(255, 250, 250, 0.9);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.75);
-  margin-top: 40px;
-}
 
 /* Responsive */
 @media screen and (max-width: 600px) {
