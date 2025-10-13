@@ -16,7 +16,7 @@ formulario.addEventListener("submit", async (e) => {
         return true;
     }
 
-    const registrado = await registrarUsuario(usuario, password, nombre, file); // <-- await
+    const registrado = await registrarUsuario(usuario, password, nombre, file); 
 
     if (registrado) {
         mensaje.textContent = `✅ Usuario ${usuario} registrado correctamente. Redirigiendo a login...`;

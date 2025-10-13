@@ -13,22 +13,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Agregar estudiante</a>
+                    <a class="nav-link" href="agregarEstudiante.php">Agregar estudiante</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Mostrar lista de estudiantes</a>
+                    <a class="nav-link" href="mostrarEstudiantes.php">Mostrar lista de estudiantes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Buscar estudiante</a>
+                    <a class="nav-link" href="buscarEstudiante.php">Buscar estudiante</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="#">Eliminar estudiante</a>
+                    <a class="nav-link"  href="eliminarEstudiante.php">Eliminar estudiante</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="#">Mostrar estadísticas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"  href="#">Borrar información</a>
+                    <a class="nav-link"  href="mostrarEstadisticas.php">Mostrar estadísticas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="#">Cerrar Sesión</a>

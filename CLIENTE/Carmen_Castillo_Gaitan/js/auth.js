@@ -9,33 +9,40 @@ function fileToDataURL(file) {
     });
 }
 
-async function registrarUsuario(usuario, password, nombre, file) {
 
-    if (!existeUsuario(usuario)) { 
-        let usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
+function getUsuarios() {
+    return JSON.parse(localStorage.getItem("usuarios")) || {};
+}
 
-        if (!file) {
-            alert("Selecciona una imagen");
-        } else {
-            const imagenBase64 = await fileToDataURL(file);
-            usuarios[usuario] = {
-                usuario,
-                nombre,
-                password,
-                isLogged: false,
-                imagen: imagenBase64   
-            };
-        }
-
-        localStorage.setItem("usuarios", JSON.stringify(usuarios));
-        return true;
-    }
-    return false;
+function setUsuarios(usuarios) {
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
 }
 
 
+async function registrarUsuario(usuario, password, nombre, file) {
+    if (existeUsuario(usuario)) return false;
+    if (!file) {
+        alert("Selecciona una imagen");
+        return false;
+    }
+
+    const usuarios = getUsuarios();
+    const imagenBase64 = await fileToDataURL(file);
+
+    usuarios[usuario] = {
+        usuario,
+        nombre,
+        password,
+        isLogged: false,
+        imagen: imagenBase64
+    };
+
+    setUsuarios(usuarios);
+    return true;
+}
+
 function existeUsuario(clave) {
-    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
+    const usuarios = getUsuarios();
     for (let usuario in usuarios) {
         if (usuario === clave) {
             return true;
@@ -46,13 +53,13 @@ function existeUsuario(clave) {
 
 
 function credencialCorrecta(user, password) {
-    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
+    const usuarios = getUsuarios();
     return usuarios[user] && usuarios[user].password === password;
 }
 
 
 function obtenerLoggedUser() {
-    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
+    const usuarios = getUsuarios();
     for (let clave in usuarios) {
         if (usuarios[clave].isLogged === true) {
             return usuarios[clave];
@@ -62,7 +69,7 @@ function obtenerLoggedUser() {
 }
 
 function isLogged() {
-    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
+   const usuarios = getUsuarios();
     for (let clave in usuarios) {
         if (usuarios[clave].isLogged === true) return true;
     }
@@ -70,11 +77,11 @@ function isLogged() {
 }
 
 cerrarSesion?.addEventListener("click", () => {
-    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
+    const usuarios = getUsuarios();
     for (let clave in usuarios) {
         usuarios[clave].isLogged = false;
     }
-    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+    setUsuarios(usuarios);
     cambiarMenu();
 });
 

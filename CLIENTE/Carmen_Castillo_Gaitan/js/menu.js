@@ -1,5 +1,6 @@
 "use strict";
 
+console.log("se")
 const enlacesPublicos = document.querySelectorAll(".publico");
 const enlacesPrivados = document.querySelectorAll(".privado");
 

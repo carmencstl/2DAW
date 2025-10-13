@@ -15,7 +15,7 @@ formulario.addEventListener("submit", (e) => {
     }
 
     if (credencialCorrecta(usuario, password)) {
-        let usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
+        let usuarios = getUsuarios();
         for (let clave in usuarios) {
             usuarios[clave].isLogged = false;
         }
