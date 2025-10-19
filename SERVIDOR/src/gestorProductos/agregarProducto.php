@@ -82,7 +82,7 @@ if (isset($_POST["nombre"])) {
                 </div>
             </div>
             <?php if ($formularioEnviado && !empty($mensaje)): ?>
-                <div class="alert mt-3 <?= strpos($mensaje, '✅') !== false ? 'alert-success' : 'alert-danger' ?>">
+                <div class="alert mt-3 <?= str_contains($mensaje, '✅') ? 'alert-success' : 'alert-danger' ?>">
                     <?= ($mensaje) ?>
                 </div>
             <?php endif; ?>

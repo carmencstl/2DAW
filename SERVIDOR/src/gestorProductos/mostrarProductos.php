@@ -1,4 +1,5 @@
 <?php
+require_once "libreria/libreria.php";
 session_start();
 
 ?>
@@ -18,6 +19,17 @@ session_start();
             <div class="card shadow-sm mt-5">
                 <div class="card-body">
                     <h5 class="card-title mb-3">Listado de productos</h5>
+                    <form method="post"  class="form">
+                        <select name="filtro" class="form-control">
+                            <option value="">Filtrar</option>
+                            <option value="a-z">a-z</option>
+                            <option value="z-a">z-a</option>
+                            <option value="Menor a mayor precio">Menor a mayor precio</option>
+                            <option value="Mayor a menor precio">Mayor a menor precio</option>
+                            <option value="Aceites">Aceites</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary mt-4 mb-4">Filtrar</button>
+                    </form>
                     <table class="table table-striped table-hover align-middle">
                         <thead class="table-primary">
                              <tr>
@@ -29,14 +41,23 @@ session_start();
                         </thead>
                         <tbody>
                                 <?php
-                                        $_SESSION["productos"] = $_SESSION["productos"] ?? [];
-                                        foreach ($_SESSION["productos"] as $producto) {
-                                            echo "<tr>";
-                                            echo "<td>" . $producto["nombre"] . "</td>";
-                                            echo "<td>" . $producto["categoria"] . "</td>";
-                                            echo "<td>" . $producto["precio"] . "</td>";
-                                            echo "<td>" . $producto["stock"] . "</td>";
-                                        }
+                                $_SESSION["productos"] = $_SESSION["productos"] ?? [];
+
+                                if (!empty($_POST["filtro"])) {
+                                    $productos_mostrados = ordenar($_POST["filtro"], $_SESSION["productos"]);
+                                } else {
+                                    $productos_mostrados = $_SESSION["productos"];
+                                }
+
+                                foreach ($productos_mostrados as $producto) {
+                                    echo "<tr>";
+                                    echo "<td>{$producto["nombre"]}</td>";
+                                    echo "<td>{$producto["categoria"]}</td>";
+                                    echo "<td>{$producto["precio"]}</td>";
+                                    echo "<td>{$producto["stock"]}</td>";
+                                    echo "</tr>";
+                                }
+
                                 ?>
                         </tbody>
                     </table>

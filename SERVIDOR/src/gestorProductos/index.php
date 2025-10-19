@@ -23,6 +23,9 @@
         <li class="nav-item">
           <a class="nav-link" href="borrarProducto.php">Borrar un producto</a>
         </li>
+          <li class="nav-item">
+              <a class="nav-link" href="Estadisticas.php">Estadisticas</a>
+          </li>
       </ul>
     </div>
   </div>

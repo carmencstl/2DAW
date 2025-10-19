@@ -2,13 +2,13 @@
 session_start();
 
 $productosSeleccionados = $_POST["producto"] ?? [];
-$_SESSION["productos"] = $_SESSION["productos"] ?? [];
+$_SESSION["productos"] =  $_SESSION["productos"] ?? [];
 
-for ($i = count($_SESSION["productos"]) - 1; $i >= 0; $i--) {
-    if (in_array($_SESSION["productos"][$i]["nombre"], $productosSeleccionados)) {
-        array_splice($_SESSION["productos"], $i, 1);
-    }
-}
+
+$_SESSION["productos"] = array_values(array_filter($_SESSION["productos"], function ($producto) use ($productosSeleccionados) {
+    return !in_array($producto["nombre"], $productosSeleccionados);
+}));
+
 ?>
 
 <!doctype html>
@@ -30,13 +30,11 @@ for ($i = count($_SESSION["productos"]) - 1; $i >= 0; $i--) {
                     <form method="post">
                         <div class="form-check mb-3">
                             <?php
-                            $_SESSION["productos"] = $_SESSION["productos"] ?? [];
 
-                            foreach ($_SESSION["productos"] as $index => $producto) {
-                                $id = "producto_" . $index;
+                            foreach ($_SESSION["productos"] as $producto) {
                                 echo '<div class="form-check mb-2">';
-                                echo '<input class="form-check-input" type="checkbox" value="' . $producto["nombre"] . '" id="' . $id . '" name="producto[]">';
-                                echo '<label class="form-check-label" for="' . $id . '">' . ($producto["nombre"]) . '</label>';
+                                echo '<input class="form-check-input" type="checkbox" value="' . $producto["nombre"] . '" name="producto[]">';
+                                echo '<label class="form-check-label">' . ($producto["nombre"]) . '</label>';
                                 echo '</div>';
                             }
                             ?>
