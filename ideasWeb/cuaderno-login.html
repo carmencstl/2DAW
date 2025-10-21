@@ -1,345 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Cuaderno Digital</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Caveat:wght@400;600;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Caveat:wght@400;600;700&family=Permanent+Marker&display=swap"
+        rel="stylesheet">
+    <link href="estilos/base.css" rel="stylesheet">
+    <link href="estilos/notebook-layout.css" rel="stylesheet">
+    <link href="estilos/buttons.css" rel="stylesheet">
+    <link href="estilos/forms.css" rel="stylesheet">
+    <link href="estilos/headers.css" rel="stylesheet">
+    <link href="estilos/decorative.css" rel="stylesheet">
     <script defer src="js/login.js"></script>
     <script defer src="js/auth.js"></script>
-        <script defer src="js/musica.js"></script>
+    <script defer src="js/musica.js"></script>
     <script defer src="js/fecha.js"></script>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Patrick Hand', cursive;
-            background: #f5f1e8;
-            background-image: 
-                repeating-linear-gradient(0deg, transparent, transparent 31px, #e3dfd5 31px, #e3dfd5 32px),
-                repeating-linear-gradient(90deg, transparent, transparent 31px, #e3dfd5 31px, #e3dfd5 32px);
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-        }
-        
-        /* Agujeros de espiral */
-        .spiral-holes {
-            position: fixed;
-            left: 40px;
-            top: 0;
-            bottom: 0;
-            width: 30px;
-            z-index: 10;
-        }
-        
-        .hole {
-            width: 20px;
-            height: 20px;
-            background: #333;
-            border-radius: 50%;
-            margin: 40px 0;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        /* Margen rojo */
-        .red-margin {
-            position: fixed;
-            left: 80px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: #ff6b6b;
-            z-index: 5;
-        }
-        
-        /* Garabato de música */
-        .music-doodle {
-            position: fixed;
-            top: 30px;
-            right: 50px;
-            cursor: pointer;
-            z-index: 100;
-            transition: all 0.3s ease;
-        }
-        
-        .music-doodle:hover {
-            transform: rotate(-10deg) scale(1.1);
-        }
-        
-        .music-icon {
-            font-size: 3rem;
-            color: #4a90e2;
-            filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.2));
-        }
-        
-        .music-status {
-            font-family: 'Caveat', cursive;
-            font-size: 1.2rem;
-            color: #666;
-            text-align: center;
-            margin-top: 5px;
-        }
-        
-        /* Contenedor principal */
-        .notebook-page {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 60px 80px 60px 120px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        /* Fecha */
-        .date-doodle {
-            font-family: 'Caveat', cursive;
-            font-size: 1.8rem;
-            color: #666;
-            text-align: right;
-            margin-bottom: 30px;
-            position: relative;
-        }
-        
-        .date-doodle::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            right: 0;
-            width: 150px;
-            height: 2px;
-            background: #666;
-            transform: rotate(-1deg);
-        }
-        
-        /* Título principal */
-        .main-title {
-            font-family: 'Caveat', cursive;
-            font-size: 4.5rem;
-            font-weight: 700;
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 10px;
-            position: relative;
-            line-height: 1.2;
-        }
-        
-        .main-title::before {
-            content: '✏️';
-            position: absolute;
-            left: -50px;
-            top: 10px;
-            font-size: 2.5rem;
-            transform: rotate(-15deg);
-        }
-        
-        .main-title::after {
-            content: '📓';
-            position: absolute;
-            right: -50px;
-            top: 10px;
-            font-size: 2.5rem;
-            transform: rotate(15deg);
-        }
-        
-        .subtitle {
-            font-family: 'Patrick Hand', cursive;
-            font-size: 1.5rem;
-            color: #7f8c8d;
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        /* Subrayado garabateado */
-        .underline-doodle {
-            width: 300px;
-            height: 3px;
-            background: #3498db;
-            margin: 20px auto;
-            position: relative;
-            transform: rotate(-0.5deg);
-        }
-        
-        /* Tarjeta de formulario */
-        .form-card {
-            background: #fff;
-            padding: 40px;
-            border-radius: 3px;
-            box-shadow: 
-                0 2px 4px rgba(0,0,0,0.1),
-                0 8px 16px rgba(0,0,0,0.1);
-            position: relative;
-            margin: 40px auto;
-            max-width: 550px;
-            transform: rotate(-0.5deg);
-            border-left: 3px solid #ff6b6b;
-        }
-        
-        .form-card::before {
-            content: '📌';
-            position: absolute;
-            top: -15px;
-            right: 50px;
-            font-size: 2rem;
-            transform: rotate(45deg);
-        }
-        
-        .form-title {
-            font-family: 'Caveat', cursive;
-            font-size: 3rem;
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 30px;
-            position: relative;
-        }
-        
-        .form-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 2px;
-            background: #3498db;
-        }
-        
-        /* Etiquetas de formulario */
-        .form-label {
-            font-family: 'Caveat', cursive;
-            font-size: 1.6rem;
-            color: #34495e;
-            margin-bottom: 8px;
-            display: block;
-        }
-        
-        .form-control {
-            font-family: 'Patrick Hand', cursive;
-            border: none;
-            border-bottom: 2px solid #bdc3c7;
-            border-radius: 0;
-            padding: 10px 5px;
-            font-size: 1.2rem;
-            background: transparent;
-            transition: all 0.3s ease;
-        }
-        
-        .form-control:focus {
-            border-bottom-color: #3498db;
-            box-shadow: none;
-            outline: none;
-            background: rgba(52, 152, 219, 0.05);
-        }
-        
-        /* Botón */
-        .btn-notebook {
-            font-family: 'Caveat', cursive;
-            font-size: 1.8rem;
-            font-weight: 600;
-            background: #3498db;
-            color: white;
-            border: 3px solid #2c3e50;
-            padding: 12px 40px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 4px 4px 0 #2c3e50;
-            width: 100%;
-            margin-top: 25px;
-            position: relative;
-            transform: rotate(-1deg);
-        }
-        
-        .btn-notebook:hover {
-            transform: rotate(-1deg) translateY(-2px);
-            box-shadow: 6px 6px 0 #2c3e50;
-            background: #2980b9;
-        }
-        
-        .btn-notebook:active {
-            transform: rotate(-1deg) translateY(0);
-            box-shadow: 2px 2px 0 #2c3e50;
-        }
-        
-        /* Toggle */
-        .toggle-text {
-            font-family: 'Patrick Hand', cursive;
-            font-size: 1.2rem;
-            color: #7f8c8d;
-            text-align: center;
-            margin-top: 20px;
-        }
-        
-        .toggle-text a {
-            color: #3498db;
-            text-decoration: underline wavy;
-            font-weight: bold;
-        }
-        
-        .toggle-text a:hover {
-            color: #2980b9;
-        }
-        
-        /* Stickers decorativos */
-        .sticker {
-            position: fixed;
-            font-size: 3rem;
-            z-index: 1;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(5deg); }
-        }
-        
-        .sticker-1 { top: 150px; left: 100px; animation-delay: 0s; }
-        .sticker-2 { top: 300px; right: 120px; animation-delay: 1s; }
-        .sticker-3 { bottom: 200px; left: 150px; animation-delay: 2s; }
-        .sticker-4 { bottom: 150px; right: 180px; animation-delay: 1.5s; }
-        
-        /* Nota adhesiva */
-        .sticky-note {
-            position: fixed;
-            bottom: 50px;
-            left: 100px;
-            width: 200px;
-            min-height: 200px;
-            background: #ffeaa7;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transform: rotate(-5deg);
-            font-family: 'Patrick Hand', cursive;
-            font-size: 1.1rem;
-            color: #2c3e50;
-            z-index: 50;
-        }
-        
-        .sticky-note::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 30px;
-            background: rgba(0,0,0,0.1);
-        }
-        
-        @media (max-width: 768px) {
-            .spiral-holes, .red-margin { display: none; }
-            .notebook-page { padding: 40px 20px; }
-            .main-title { font-size: 3rem; }
-            .main-title::before, .main-title::after { display: none; }
-            .sticker, .sticky-note { display: none; }
-            .form-card { transform: rotate(0); }
-        }
-    </style>
+    <script defer src="js/index.js"></script>
 </head>
+
 <body>
     <div class="spiral-holes">
         <div class="hole"></div>
@@ -359,22 +40,27 @@
         <div class="music-status" id="musicStatus">play</div>
     </div>
     <audio id="backgroundMusic" loop>
-        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
+        <source src="img/relaxing-lofi-music-royalty-free-no-copyright-274465.mp3" type="audio/mpeg">
     </audio>
     <div class="sticker sticker-1">☕</div>
     <div class="sticker sticker-2">💡</div>
     <div class="sticker sticker-3">📚</div>
-    <div class="sticker sticker-4">⭐</div>
-    <div class="sticky-note">
+    <div class="sticky-note fixed yellow">
         <strong>Recordatorio:</strong><br><br>
         ¡Organiza tus apuntes!<br>
         Cada ejercicio es importante 📝
     </div>
+
     <div class="notebook-page">
-        <div class="date-doodle" id="currentDate">Lunes, 20 de Octubre 2025</div>
+        <div class="page-header">
+            <button class="back-btn" onclick="redirigir('cuaderno-index.html')">Volver al inicio</button>
+            <div class="date-doodle" id="currentDate"></div>
+        </div>
+
         <h1 class="main-title">Mi Cuaderno Digital</h1>
-        <p class="subtitle">~ Donde guardo todos mis apuntes importantes ~</p>
+        <p class="subtitle">~ Donde documento mis avances en JavaScript ~</p>
         <div class="underline-doodle"></div>
+
         <div class="form-card">
             <h2 class="form-title">Iniciar Sesión</h2>
             <form id="formLogin">
@@ -384,7 +70,8 @@
                 </div>
                 <div class="mb-4">
                     <label class="form-label">Tu contraseña</label>
-                    <input type="password" class="form-control" id="password" placeholder="Shh... es un secreto" required>
+                    <input type="password" class="form-control" id="password" placeholder="Shh..."
+                        required>
                 </div>
                 <button type="submit" class="btn-notebook">¡Abrir mi cuaderno!</button>
             </form>
@@ -395,4 +82,5 @@
         </div>
     </div>
 </body>
+
 </html>

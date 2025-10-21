@@ -1,329 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acceso - Mi Cuaderno</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
-     <link href="../estilos/styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Caveat:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="../estilos/base.css" rel="stylesheet">
+    <link href="../estilos/notebook-layout.css" rel="stylesheet">
+    <link href="../estilos/buttons.css" rel="stylesheet">
+    <link href="../estilos/headers.css" rel="stylesheet">
+    <link href="../estilos/cards.css" rel="stylesheet">
+    <link href="../estilos/decorative.css" rel="stylesheet">
     <script defer src="../js/musica.js"></script>
-     <script defer src="../js/fecha.js"></script>
+    <script defer src="../js/fecha.js"></script>
     <script defer src="../js/index.js"></script>
-     <script defer src="../js/menu.js"></script>
-          <script defer src="../js/auth.js"></script> 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Patrick Hand', cursive;
-            background: #f5f1e8;
-            background-image: 
-                repeating-linear-gradient(0deg, transparent, transparent 31px, #e3dfd5 31px, #e3dfd5 32px),
-                repeating-linear-gradient(90deg, transparent, transparent 31px, #e3dfd5 31px, #e3dfd5 32px);
-            min-height: 100vh;
-            padding-bottom: 50px;
-        }
-        
-        .spiral-holes {
-            position: fixed;
-            left: 40px;
-            top: 0;
-            bottom: 0;
-            width: 30px;
-            z-index: 10;
-        }
-        
-        .hole {
-            width: 20px;
-            height: 20px;
-            background: #333;
-            border-radius: 50%;
-            margin: 40px 0;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .red-margin {
-            position: fixed;
-            left: 80px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: #ff6b6b;
-            z-index: 5;
-        }
-        
-        .music-doodle {
-            position: fixed;
-            top: 30px;
-            right: 50px;
-            cursor: pointer;
-            z-index: 100;
-            transition: all 0.3s ease;
-        }
-        
-        .music-doodle:hover {
-            transform: rotate(-10deg) scale(1.1);
-        }
-        
-        .music-icon {
-            font-size: 3rem;
-            color: #4a90e2;
-        }
-        
-        .music-status {
-            font-family: 'Caveat', cursive;
-            font-size: 1.2rem;
-            color: #666;
-            text-align: center;
-        }
-        
-        .notebook-page {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 50px 80px 50px 120px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .page-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-        
-        .date-doodle {
-            font-family: 'Caveat', cursive;
-            font-size: 1.6rem;
-            color: #666;
-        }
-        
-        .back-btn {
-            font-family: 'Caveat', cursive;
-            font-size: 1.4rem;
-            background: #95a5a6;
-            color: white;
-            border: 3px solid #7f8c8d;
-            padding: 8px 25px;
-            border-radius: 20px;
-            cursor: pointer;
-            box-shadow: 3px 3px 0 #7f8c8d;
-            transform: rotate(-1deg);
-            transition: all 0.2s ease;
-        }
-        
-        .back-btn:hover {
-            transform: rotate(-1deg) translateY(-2px);
-            box-shadow: 5px 5px 0 #7f8c8d;
-        }
-        
-        .category-header {
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            border-left: 6px solid #9b59b6;
-            margin-bottom: 50px;
-            position: relative;
-        }
-        
-        .category-header::before {
-            content: '📎';
-            position: absolute;
-            top: -15px;
-            right: 30px;
-            font-size: 2.5rem;
-            transform: rotate(-30deg);
-        }
-        
-        .category-icon {
-            font-size: 5rem;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .category-title {
-            font-family: 'Caveat', cursive;
-            font-size: 4rem;
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 15px;
-            position: relative;
-        }
-        
-        .category-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%) rotate(-1deg);
-            width: 60%;
-            height: 4px;
-            background: #9b59b6;
-        }
-        
-        .category-desc {
-            font-family: 'Patrick Hand', cursive;
-            font-size: 1.4rem;
-            color: #7f8c8d;
-            text-align: center;
-            line-height: 1.6;
-        }
-        
-        .section-title {
-            font-family: 'Caveat', cursive;
-            font-size: 3rem;
-            color: #2c3e50;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        
-        .exercises-list {
-            display: grid;
-            gap: 30px;
-        }
-        
-        .exercise-item {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            border-left: 5px solid #3498db;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-        
-        .exercise-item:nth-child(1) { border-left-color: #9b59b6; transform: rotate(-0.5deg); }
-        .exercise-item:nth-child(2) { border-left-color: #f39c12; transform: rotate(0.5deg); }
-        .exercise-item:nth-child(3) { border-left-color: #1abc9c; transform: rotate(-0.3deg); }
-        
-        .exercise-item:hover {
-            transform: translateX(10px) rotate(0deg);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-        
-        .exercise-item::before {
-            content: '📄';
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 2rem;
-            opacity: 0.3;
-        }
-        
-        .exercise-number {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Caveat', cursive;
-            font-size: 2.5rem;
-            color: white;
-            font-weight: bold;
-            flex-shrink: 0;
-            box-shadow: 0 4px 10px rgba(155, 89, 182, 0.4);
-        }
-        
-        .exercise-item:nth-child(2) .exercise-number {
-            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
-            box-shadow: 0 4px 10px rgba(243, 156, 18, 0.4);
-        }
-        
-        .exercise-item:nth-child(3) .exercise-number {
-            background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
-            box-shadow: 0 4px 10px rgba(26, 188, 156, 0.4);
-        }
-        
-        .exercise-content {
-            flex: 1;
-        }
-        
-        .exercise-title {
-            font-family: 'Caveat', cursive;
-            font-size: 2.2rem;
-            color: #2c3e50;
-            margin-bottom: 8px;
-        }
-        
-        .exercise-description {
-            font-family: 'Patrick Hand', cursive;
-            font-size: 1.2rem;
-            color: #7f8c8d;
-            margin-bottom: 10px;
-        }
-        
-        .exercise-tags {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        
-        .tag {
-            background: #ecf0f1;
-            padding: 5px 15px;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            color: #34495e;
-            border: 2px dashed #bdc3c7;
-        }
-        
-        .sticky-note {
-            background: #74b9ff;
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-            transform: rotate(-2deg);
-            position: relative;
-        }
-        
-        .sticky-note::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 25px;
-            background: rgba(0,0,0,0.05);
-        }
-        
-        .sticky-note strong {
-            font-family: 'Caveat', cursive;
-            font-size: 1.6rem;
-            color: white;
-            display: block;
-            margin-bottom: 10px;
-        }
-        
-        .sticky-note p {
-            color: white;
-            margin: 0;
-        }
-        
-        @media (max-width: 768px) {
-            .spiral-holes, .red-margin { display: none; }
-            .notebook-page { padding: 30px 20px; }
-            .page-header { flex-direction: column; gap: 15px; }
-            .exercise-item {
-                flex-direction: column;
-                text-align: center;
-                transform: rotate(0deg) !important;
-            }
-        }
-    </style>
+    <script defer src="../js/menu.js"></script>
+    <script defer src="../js/auth.js"></script>
 </head>
+
 <body>
     <div class="spiral-holes">
         <div class="hole"></div>
@@ -337,25 +34,30 @@
         <div class="hole"></div>
         <div class="hole"></div>
     </div>
-    
+
     <div class="red-margin"></div>
-    
+
     <div class="music-doodle" onclick="toggleMusic()">
         <div class="music-icon">🎵</div>
         <div class="music-status" id="musicStatus">play</div>
     </div>
-    
+
     <audio id="backgroundMusic" loop>
-        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
+        <source src="../img/relaxing-lofi-music-royalty-free-no-copyright-274465.mp3" type="audio/mpeg">
     </audio>
-    
+
     <div class="notebook-page">
-        <div class="date-doodle" id="currentDate"></div>
+        <div class="page-header-top">
+            <button class="back-btn" onclick="redirigir('../cuaderno-index.html')">Volver al inicio</button>
+            <div class="date-doodle" id="currentDate"></div>
+        </div>
+
         <div class="profile-header">
             <div class="profile-section">
                 <div class="polaroid-container">
-                    <img id="userPhoto" class="polaroid-img" src="img/iconoPorDefecto.png" alt="Mi foto">
+                    <img id="userPhoto" class="polaroid-img" src="" alt="Mi foto">
                 </div>
+
                 <div class="welcome-text">
                     <h1>¡Hola, <span id="username">Estudiante</span>!</h1>
                     <p>Aquí están todos tus apuntes y ejercicios</p>
@@ -363,6 +65,7 @@
             </div>
             <button class="logout-btn privado" onclick="cerrarSesion('../cuaderno-index.html')">Cerrar cuaderno</button>
         </div>
+
         <div class="category-header">
             <div class="category-icon">💡</div>
             <h1 class="category-title">Acceso</h1>
@@ -370,14 +73,14 @@
                 Aquí se encuentran todos mis ejercicios sobre el manejo de datos en el navegador.
             </p>
         </div>
-        
+
         <div class="sticky-note">
             <strong>💻 Sobre esta sección:</strong>
             <p>Estos ejercicios cubren los fundamentos de JavaScript. ¡Practicar es esencial para dominarlos!</p>
         </div>
-        
+
         <h2 class="section-title">📝 Lista de Ejercicios</h2>
-        
+
         <div class="exercises-list">
             <div class="exercise-item" onclick="redirigir('ejercicios/cuaderno-Acceso-cookies.html')">
                 <div class="exercise-number">1</div>
@@ -393,7 +96,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="exercise-item" onclick="redirigir('ejercicios/cuaderno-Acceso-localStorage.html')">
                 <div class="exercise-number">2</div>
                 <div class="exercise-content">
@@ -408,22 +111,23 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="exercise-item" onclick="openExercise('prog-ejer3.html')">
+
+            <div class="exercise-item" onclick="redirigir('ejercicios/cuaderno-Acceso-indexedDB.html')">
                 <div class="exercise-number">3</div>
                 <div class="exercise-content">
                     <h3 class="exercise-title">Ejercicio 3</h3>
                     <p class="exercise-description">
-                        Domina los arrays: map, filter, reduce, forEach y más métodos esenciales.
+                        Como se usa IndexedDB
                     </p>
                     <div class="exercise-tags">
-                        <span class="tag">Arrays</span>
-                        <span class="tag">map()</span>
-                        <span class="tag">filter()</span>
+                        <span class="tag">-</span>
+                        <span class="tag">-</span>
+                        <span class="tag">-</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
