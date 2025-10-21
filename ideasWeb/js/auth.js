@@ -76,12 +76,13 @@ function isLogged() {
     return false;
 }
 
-function cerrarSesion() {
+function cerrarSesion(url) {
     const usuarios = getUsuarios();
     for (let clave in usuarios) {
         usuarios[clave].isLogged = false;
     }
     setUsuarios(usuarios);
+    window.location.href = url;
     cambiarMenu();
 };
 

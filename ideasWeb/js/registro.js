@@ -21,7 +21,7 @@ formulario.addEventListener("submit", async (e) => {
     if (registrado) {
         mensaje.textContent = `✅ Usuario ${usuario} registrado correctamente. Redirigiendo a login...`;
         setTimeout(() => {
-            window.location.href = "login.html";
+            window.location.href = "cuaderno-login.html";
         }, 2000);
     } else {
         mensaje.textContent = "❌ El usuario ya existe. Por favor, elige otro.";
