@@ -99,10 +99,10 @@ function mostrarUsuario(dato) {
     tarjeta.className = "tarjeta-usuario";
     
     const nombre = document.createElement("p");
-    nombre.innerHTML = `<strong>Nombre:</strong> ${dato.nombre}`;
+    nombre.innerHTML = `<b>Nombre:</b> ${dato.nombre}`;
     
     const clave = document.createElement("p");
-    clave.innerHTML = `<strong>Clave:</strong> ${dato.clave}`;
+    clave.innerHTML = `<b>Clave:</b> ${dato.clave}`;
     
     const imagen = document.createElement("img");
     imagen.src = dato.imagen;
@@ -126,15 +126,14 @@ function mostrarTodosUsuarios(datos) {
         tarjeta.className = "tarjeta-usuario";
         
         const nombreP = document.createElement("p");
-        nombreP.innerHTML = `<strong>Nombre:</strong> ${datos[nombre].nombre}`;
+        nombreP.innerHTML = `<b>Nombre:</b> ${datos[nombre].nombre}`;
         
         const claveP = document.createElement("p");
-        claveP.innerHTML = `<strong>Clave:</strong> ${datos[nombre].clave}`;
+        claveP.innerHTML = `<b>Clave:</b> ${datos[nombre].clave}`;
         
         const imagen = document.createElement("img");
         imagen.src = datos[nombre].imagen;
         imagen.width = 150;
-        imagen.alt = "Foto de usuario";
         
         tarjeta.appendChild(nombreP);
         tarjeta.appendChild(claveP);

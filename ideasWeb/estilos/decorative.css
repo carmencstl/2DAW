@@ -1,9 +1,5 @@
-/* ==========================================
-   DECORATIVE.CSS - Elementos decorativos
-   Aplicar en páginas que necesiten decoraciones (stickers, notas, etc)
-   ========================================== */
 
-/* Control de música */
+/* Boton de música */
 .music-doodle {
     position: fixed;
     top: 30px;
@@ -31,7 +27,7 @@
     margin-top: 5px;
 }
 
-/* Stickers flotantes animados */
+/* Emojis flotantes animados */
 .sticker {
     position: fixed;
     font-size: 3rem;
@@ -72,7 +68,7 @@
     animation-delay: 1.5s;
 }
 
-/* Notas adhesivas */
+/* Post-it */
 .sticky-note {
     background: #ffeaa7;
     padding: 20px;
@@ -97,16 +93,6 @@
     margin: 0;
 }
 
-.sticky-note::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 25px;
-    background: rgba(0, 0, 0, 0.05);
-}
-
 .sticky-note strong {
     font-family: 'Caveat', cursive;
     font-size: 1.6rem;
@@ -125,7 +111,7 @@
 .sticky-note.green { background: #55efc4; }
 .sticky-note.yellow { background: #ffeaa7; }
 
-/* Nota adhesiva de recordatorio (fixed) */
+/* Post-int */
 .sticky-reminder {
     position: fixed;
     bottom: 30px;
@@ -139,16 +125,6 @@
     color: white;
     z-index: 50;
     font-size: 1.1rem;
-}
-
-.sticky-reminder::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 25px;
-    background: rgba(0, 0, 0, 0.1);
 }
 
 .sticky-reminder strong {
@@ -247,19 +223,8 @@
 .divider-doodle::before {
     content: '⭐';
     position: absolute;
-    left: 50%;
-    top: 50%;
     transform: translate(-50%, -50%);
     background: #f5f1e8;
     padding: 0 10px;
     font-size: 1.5rem;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .sticker,
-    .sticky-note.fixed,
-    .sticky-reminder {
-        display: none;
-    }
 }

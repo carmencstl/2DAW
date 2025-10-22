@@ -1,12 +1,12 @@
 
 
-/* Botón base */
+/* estilos generales a todos los botones */
 .back-btn,
 .general-btn,
 .logout-btn,
 .login-btn,
 .registro-btn,
-.btn-notebook {
+.btn-form {
     font-family: 'Caveat', cursive;
     color: white;
     border-radius: 20px;
@@ -14,7 +14,7 @@
     transition: all 0.2s ease;
 }
 
-/* Botón de regresar */
+/* Botón de volver */
 .back-btn {
     font-size: 1.4rem;
     background: #95a5a6;
@@ -28,11 +28,6 @@
     transform: rotate(-1deg) translateY(-2px);
     box-shadow: 5px 5px 0 #7f8c8d;
     background: #7f8c8d;
-}
-
-.back-btn:active {
-    transform: rotate(-1deg) translateY(0);
-    box-shadow: 2px 2px 0 #7f8c8d;
 }
 
 /* Botón general */
@@ -96,7 +91,7 @@
     box-shadow: 5px 5px 0 #7C3AED;
 }
 
-.btn-notebook {
+.btn-form {
     font-size: 1.8rem;
     font-weight: 600;
     background: #3498db;
@@ -111,28 +106,28 @@
     transform: rotate(-1deg);
 }
 
-.btn-notebook:hover {
+.btn-form:hover {
     transform: rotate(-1deg) translateY(-2px);
     box-shadow: 6px 6px 0 #2c3e50;
     background: #2980b9;
 }
 
-.btn-notebook:active {
+.btn-form:active {
     transform: rotate(-1deg) translateY(0);
     box-shadow: 2px 2px 0 #2c3e50;
 }
 
-.btn-notebook.green {
+.btn-form.green {
     background: #27ae60;
     border: 3px solid #229954;
     box-shadow: 4px 4px 0 #229954;
 }
 
-.btn-notebook.green:hover {
+.btn-form.green:hover {
     background: #229954;
     box-shadow: 6px 6px 0 #229954;
 }
 
-.btn-notebook.green:active {
+.btn-form.green:active {
     box-shadow: 2px 2px 0 #229954;
 }

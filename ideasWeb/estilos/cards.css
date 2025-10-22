@@ -1,7 +1,4 @@
-/* ==========================================
-   CARDS.CSS - Componentes de tarjetas de ejercicios
-   Aplicar en páginas con grids de ejercicios
-   ========================================== */
+
 
 /* Grid de ejercicios */
 .exercises-grid {
@@ -11,12 +8,14 @@
     margin-top: 50px;
 }
 
+/* Para la lista de ejercicios dentro de cada categoria */
+
 .exercises-list {
     display: grid;
     gap: 30px;
 }
 
-/* Tarjeta de ejercicio tipo card (vista grid) */
+/* Tarjeta de ejercicio tipo card (vista grid en el indice) */
 .exercise-card {
     background: white;
     padding: 30px;
@@ -57,7 +56,9 @@
     transform: rotate(-45deg);
 }
 
-.exercise {
+/* Tarjeta para el contenido del ejercicio */
+
+ .exercise {
     background: white;
     padding: 30px;
     border-radius: 5px;
@@ -66,8 +67,10 @@
     position: relative;
     border-left: 4px solid #db3482;
     min-height: 200px;
-}
+} 
 
+
+/* Tarjeta de la lista de ejercicios de cafa categoria */
 .exercise-item {
     background: white;
     padding: 30px;

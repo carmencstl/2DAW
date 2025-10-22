@@ -1,7 +1,3 @@
-/* ==========================================
-   CONTENT.CSS - Estilos para el contenido de ejercicios
-   Aplicar en páginas con contenido detallado de ejercicios
-   ========================================== */
 
 /* Línea divisoria decorativa */
 .divider-doodle {
@@ -12,16 +8,6 @@
     position: relative;
 }
 
-.divider-doodle::before {
-    content: '⭐';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background: #f5f1e8;
-    padding: 0 10px;
-    font-size: 1.8rem;
-}
 
 /* Área de contenido principal */
 .content-area {

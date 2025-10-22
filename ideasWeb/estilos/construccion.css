@@ -1,7 +1,3 @@
-/* ==========================================
-   CONSTRUCCION.CSS - Página en construcción
-   Solo para páginas que están siendo desarrolladas
-   ========================================== */
 
 .construction-container {
     text-align: center;
@@ -179,29 +175,4 @@
     font-family: 'Caveat', cursive;
     font-size: 2rem;
     color: #7f8c8d;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .construction-container {
-        transform: rotate(0);
-        padding: 40px 15px;
-    }
-
-    .construction-icon {
-        font-size: 5rem;
-    }
-
-    .construction-title {
-        font-size: 3rem;
-    }
-
-    .tools-animation {
-        font-size: 2rem;
-        gap: 10px;
-    }
-
-    .btn-group {
-        flex-direction: column;
-    }
 }

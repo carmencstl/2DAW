@@ -10,7 +10,7 @@ body {
     background: #f5f1e8;
     background-image:
         repeating-linear-gradient(0deg, transparent, transparent 31px, #e3dfd5 31px, #e3dfd5 32px),
-        repeating-linear-gradient(90deg, transparent, transparent 31px, #e3dfd5 31px, #e3dfd5 32px);
+        repeating-linear-gradient(90deg, transparent, transparent 31px, #e3dfd5 31px, #e3dfd5 32px); 
     min-height: 100vh;
     padding-bottom: 50px;
 }

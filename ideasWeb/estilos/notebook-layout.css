@@ -1,9 +1,5 @@
-/* ==========================================
-   NOTEBOOK-LAYOUT.CSS - Estructura del cuaderno
-   Aplicar en todas las páginas con estilo cuaderno
-   ========================================== */
 
-/* Agujeros de espiral */
+/* Agujeros */
 .spiral-holes {
     position: fixed;
     left: 40px;
@@ -39,17 +35,4 @@
     margin: 0 auto;
     padding: 50px 20px 50px 120px;
     position: relative;
-    z-index: 2;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .spiral-holes,
-    .red-margin {
-        display: none;
-    }
-
-    .notebook-page {
-        padding: 30px 20px;
-    }
 }
