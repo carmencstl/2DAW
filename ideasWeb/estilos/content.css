@@ -140,6 +140,7 @@
     display: inline-block;
 }
 
+
 .exercise-header .exercise-title::after {
     content: '';
     position: absolute;
