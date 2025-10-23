@@ -18,7 +18,7 @@ function abrirBaseDatos() {
                     password: "admin123",
                     nombre: "Administrador",
                     isLogged: false,
-                    imagen: "img/admin.png",
+                    imagen: null,
                     tipo: "admin"
                 };
 

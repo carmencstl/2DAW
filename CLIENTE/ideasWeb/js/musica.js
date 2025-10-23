@@ -20,7 +20,7 @@ const music = document.getElementById('backgroundMusic');
             } else {
                 music.play();
                 document.getElementById('musicStatus').textContent = 'pause';
-                musicaOn = true;
+                musicaON = true;
             }
         }
 

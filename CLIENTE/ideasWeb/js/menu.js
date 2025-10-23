@@ -5,23 +5,25 @@ console.log("Script cargado correctamente");
 const enlacesPublicos = document.querySelectorAll(".publico");
 const enlacesPrivados = document.querySelectorAll(".privado");
 
-const nombreUsuario = document.getElementById("username"); 
-const imagenPerfil = document.getElementById("userPhoto"); 
+const nombreUsuario = document.getElementById("username");
+const imagenPerfil = document.getElementById("userPhoto");
 
 const crud = document.getElementById("admin");
 
 async function cambiarMenu() {
-    const usuario = await obtenerLoggedUser(); 
+    const usuario = await obtenerLoggedUser();
 
     if (usuario) {
         enlacesPublicos.forEach(e => e.style.display = "none");
         enlacesPrivados.forEach(e => e.style.display = "block");
 
         nombreUsuario.innerHTML = usuario.usuario;
-        imagenPerfil.src = typeof usuario.imagen === "string" ? usuario.imagen : URL.createObjectURL(usuario.imagen);
-        imagenPerfil.onload = () => URL.revokeObjectURL(imagenPerfil.src);
+        if (usuario.imagen) {
+            imagenPerfil.src = typeof usuario.imagen === "string" ? usuario.imagen : URL.createObjectURL(usuario.imagen);
+            imagenPerfil.onload = () => URL.revokeObjectURL(imagenPerfil.src);
+        }
 
-        if(usuario.tipo === "admin"){
+        if (usuario.tipo === "admin") {
             crud.style.display = "block";
         }
 

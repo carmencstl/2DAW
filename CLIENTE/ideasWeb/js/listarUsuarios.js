@@ -31,9 +31,17 @@ async function listarUsuarios() {
 
         const tdImagen = document.createElement("td");
         const img = document.createElement("img");
-        img.src = typeof user.imagen === "string" ? user.imagen : URL.createObjectURL(user.imagen);
+
+        //Este if lo hago para no tener problemas con la imagen de admin que creo al iniciar la base de datos
+        if (user.imagen) {
+            img.src = typeof user.imagen === "string" ? user.imagen : URL.createObjectURL(user.imagen);
+            img.onload = () => URL.revokeObjectURL(img.src); // Liberamos memoria
+        } else {
+            img.src = "./img/iconoPorDefecto.png";
+        }
+
         img.width = 40;
-        img.img = 40;
+        img.height = 40;
         img.style.borderRadius = "50%";
         img.onload = () => URL.revokeObjectURL(img.src); //Liberamos memoria
         tdImagen.appendChild(img);
