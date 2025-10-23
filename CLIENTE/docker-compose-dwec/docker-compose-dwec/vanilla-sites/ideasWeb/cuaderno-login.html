@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Cuaderno Digital</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Caveat:wght@400;600;700&family=Permanent+Marker&display=swap"
+        rel="stylesheet">
+    <link href="estilos/base.css" rel="stylesheet">
+    <link href="estilos/notebook-layout.css" rel="stylesheet">
+    <link href="estilos/buttons.css" rel="stylesheet">
+    <link href="estilos/forms.css" rel="stylesheet">
+    <link href="estilos/headers.css" rel="stylesheet">
+    <link href="estilos/decorative.css" rel="stylesheet">
+    <script defer src="js/login.js"></script>
+    <script defer src="js/auth.js"></script>
+    <script defer src="js/musica.js"></script>
+    <script defer src="js/fecha.js"></script>
+    <script defer src="js/index.js"></script>
+</head>
+
+<body>
+    <div class="spiral-holes">
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+    </div>
+    <div class="red-margin"></div>
+    <div class="music-doodle" onclick="toggleMusic()">
+        <div class="music-icon">🎵</div>
+        <div class="music-status" id="musicStatus">play</div>
+    </div>
+    <audio id="backgroundMusic" loop>
+        <source src="img/relaxing-lofi-music-royalty-free-no-copyright-274465.mp3" type="audio/mpeg">
+    </audio>
+    <div class="sticker sticker-1">☕</div>
+    <div class="sticker sticker-2">💡</div>
+    <div class="sticker sticker-3">📚</div>
+    <div class="sticky-note fixed yellow">
+        <strong>Recordatorio:</strong><br><br>
+        ¡Organiza tus apuntes!<br>
+        Cada ejercicio es importante 📝
+    </div>
+
+    <div class="notebook-page">
+        <div class="page-header">
+            <button class="back-btn" onclick="redirigir('cuaderno-index.html')">Volver al inicio</button>
+            <div class="date-doodle" id="currentDate"></div>
+        </div>
+
+        <h1 class="main-title">Mi Cuaderno Digital</h1>
+        <p class="subtitle">~ Donde documento mis avances en JavaScript ~</p>
+        <div class="underline-doodle"></div>
+
+        <div class="form-card">
+            <h2 class="form-title">Iniciar Sesión</h2>
+            <form id="formLogin">
+                <div class="mb-4">
+                    <label class="form-label">Tu nombre de usuario</label>
+                    <input type="text" class="form-control" id="usuario" placeholder="¿Cómo te llamas?" required>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label">Tu contraseña</label>
+                    <input type="password" class="form-control" id="password" placeholder="Shh..."
+                        required>
+                </div>
+                <button type="submit" class="btn-form">¡Abrir mi cuaderno!</button>
+            </form>
+            <div class="toggle-text">
+                ¿Primera vez aquí? <a href="cuaderno-registro.html">¡Crea tu cuaderno!</a>
+            </div>
+            <div class="toggle-text mensaje"></div>
+        </div>
+    </div>
+</body>
+
+</html>

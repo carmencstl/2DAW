@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Mi Cuaderno</title>
+    <link href="estilos/base.css" rel="stylesheet">
+    <link href="estilos/notebook-layout.css" rel="stylesheet">
+    <link href="estilos/buttons.css" rel="stylesheet">
+    <link href="estilos/forms.css" rel="stylesheet">
+    <link href="estilos/headers.css" rel="stylesheet">
+    <link href="estilos/decorative.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Caveat:wght@400;600;700&family=Permanent+Marker&display=swap"
+        rel="stylesheet">
+    <script defer src="js/registro.js"></script>
+    <script defer src="js/auth.js"></script>
+    <script defer src="js/musica.js"></script>
+    <script defer src="js/fecha.js"></script>
+    <script defer src="js/photoPreview.js"></script>
+</head>
+
+<body>
+    <div class="spiral-holes">
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+    </div>
+    <div class="red-margin"></div>
+    <div class="music-doodle" onclick="toggleMusic()">
+        <div class="music-icon">🎵</div>
+        <div class="music-status" id="musicStatus">play</div>
+    </div>
+    <audio id="backgroundMusic" loop>
+        <source src="img/relaxing-lofi-music-royalty-free-no-copyright-274465.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="sticker sticker-1">🎨</div>
+    <div class="sticker sticker-2">✏️</div>
+    <div class="sticker sticker-3">📚</div>
+
+    <!-- Post-it -->
+    <div class="sticky-note fixed blue">
+        <strong>¡Bienvenido!</strong><br><br>
+        Crea tu cuenta para empezar a organizar tus apuntes 📝<br><br>
+    </div>
+
+    <div class="notebook-page">
+        <div class="page-header">
+            <button class="back-btn" onclick="window.location.href='cuaderno-index.html'">Volver al inicio</button>
+            <div class="date-doodle" id="currentDate"></div>
+        </div>
+
+        <h1 class="main-title">¡Crea Tu Cuaderno!</h1>
+        <p class="subtitle">~ Empieza a organizar tus apuntes de forma divertida ~</p>
+        <div class="underline-doodle"></div>
+
+        <div class="steps-indicator">
+            <div class="step green">1. Datos básicos</div>
+            <div class="step purple">2. Tu foto</div>
+            <div class="step orange">3. ¡Listo!</div>
+        </div>
+
+        <div class="form-card green">
+            <h2 class="form-title">Registro de Nuevo Usuario</h2>
+            <form id="formRegistro">
+                <div class="mb-4">
+                    <label class="form-label">Nombre de usuario *</label>
+                    <input type="text" class="form-control" id="usuario" placeholder="Tu nombre" required>
+                    <small class="form-text">Este será tu nombre de usuario</small>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label">¿Cómo te llamas? *</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Tu nombre" required>
+                    <small class="form-text">Este será tu nombre</small>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label">Elige una contraseña *</label>
+                    <input type="password" class="form-control" id="password" placeholder="Tu contraseña" required>
+                    <small class="form-text">Algo que recuerdes fácilmente</small>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label">Tu foto de perfil</label>
+                    <input type="file" class="form-control" id="imagenPerfil" accept="image/*"
+                        onchange="previewPhoto(event)" required>
+                    <small class="form-text">Dale un toque personal a tu cuaderno</small>
+                </div>
+
+                <div class="photo-preview hidden" id="photoPreview">
+                    <div class="polaroid">
+                        <img id="previewImage" src="" alt="Tu foto">
+                        <div class="polaroid-text">¡Así me veo!</div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-form green">¡Empieza a llenar tu cuaderno!</button>
+            </form>
+            <div class="toggle-text">
+                ¿Ya tienes una cuenta? <a href="cuaderno-login.html">Inicia sesión aquí</a>
+            </div>
+            <div class="toggle-text" id="mensaje"></div>
+        </div>
+    </div>
+</body>
+
+</html>
