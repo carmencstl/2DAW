@@ -1,11 +1,11 @@
 "use strict";
 
-async function leerIndexedDB() {
+async function leerIndexedDBEjer() {
     try {
-        if (!db) await abrirBaseDatos();
+        if (!dbEjer) await abrirBaseDatosEjer();
 
         return new Promise((resolve, reject) => {
-            const transaction = db.transaction("usuariosEjer", "readonly");
+            const transaction = dbEjer.transaction("usuariosEjer", "readonly");
             const store = transaction.objectStore("usuariosEjer");
             const requestLeer = store.getAll();
 

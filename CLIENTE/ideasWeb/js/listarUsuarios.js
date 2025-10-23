@@ -26,6 +26,9 @@ async function listarUsuarios() {
         const tdUsuario = document.createElement("td");
         tdUsuario.textContent = user.usuario;
 
+        const tdRol = document.createElement("td");
+        tdRol.textContent = user.tipo;
+
         const tdImagen = document.createElement("td");
         const img = document.createElement("img");
         img.src = typeof user.imagen === "string" ? user.imagen : URL.createObjectURL(user.imagen);
@@ -39,7 +42,7 @@ async function listarUsuarios() {
         const tdAcciones = document.createElement("td");
 
         const btnBorrar = document.createElement("button");
-        btnBorrar.innerHTML = `<img src="../../img/delete.png" width="22" height="22" />`;
+        btnBorrar.innerHTML = `<img src="./img/delete.png" width="30" height="30" />`;
         btnBorrar.addEventListener("click", async () => {
             await borrarUsuarioIndexedDB(user.usuario);
             await listarUsuarios();
@@ -47,13 +50,13 @@ async function listarUsuarios() {
         tdAcciones.appendChild(btnBorrar);
 
         const btnActualizar = document.createElement("button");
-        btnActualizar.innerHTML = `<img src="../../img/update.png" width="22" height="22" />`;
+        btnActualizar.innerHTML = `<img src="./img/update.png" width="30" height="30" />`;
         btnActualizar.addEventListener("click", async () => {
-            await borrarUsuarioIndexedDB(user.usuario);
 
             nombre.value = user.nombre;
             usuario.value = user.usuario;
             password.value = user.password;
+            rol.value = user.tipo;
             imagen.value = null;
 
             imagenActual = user.imagen;
@@ -69,6 +72,7 @@ async function listarUsuarios() {
 
         tr.appendChild(tdNombre);
         tr.appendChild(tdUsuario);
+        tr.appendChild(tdRol);
         tr.appendChild(tdImagen);
         tr.appendChild(tdAcciones);
         tabla.appendChild(tr);

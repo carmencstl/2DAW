@@ -8,6 +8,8 @@ const enlacesPrivados = document.querySelectorAll(".privado");
 const nombreUsuario = document.getElementById("username"); 
 const imagenPerfil = document.getElementById("userPhoto"); 
 
+const crud = document.getElementById("admin");
+
 async function cambiarMenu() {
     const usuario = await obtenerLoggedUser(); 
 
@@ -16,7 +18,12 @@ async function cambiarMenu() {
         enlacesPrivados.forEach(e => e.style.display = "block");
 
         nombreUsuario.innerHTML = usuario.usuario;
-        imagenPerfil.src = usuario.imagen || "img/iconoPorDefecto.png";
+        imagenPerfil.src = typeof usuario.imagen === "string" ? usuario.imagen : URL.createObjectURL(usuario.imagen);
+        imagenPerfil.onload = () => URL.revokeObjectURL(imagenPerfil.src);
+
+        if(usuario.tipo === "admin"){
+            crud.style.display = "block";
+        }
 
     } else {
         // Mostrar solo los elementos públicos

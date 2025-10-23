@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso - Mi Cuaderno</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Caveat:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="./estilos/base.css" rel="stylesheet">
+    <link href="./estilos/notebook-layout.css" rel="stylesheet">
+    <link href="./estilos/buttons.css" rel="stylesheet">
+    <link href="./estilos/headers.css" rel="stylesheet">
+    <link href="./estilos/cards.css" rel="stylesheet">
+    <link href="./estilos/forms.css" rel="stylesheet">
+    <link href="./estilos/decorative.css" rel="stylesheet">
+    <script defer src="./js/indexedDBOpen.js"></script>
+    <script defer src="./js/indexedDBDelete.js"></script>
+    <script defer src="./js/indexedDBRead.js"></script>
+    <script defer src="./js/indexedDBSave.js"></script>
+    <script defer src="./js/APIcall.js"></script>
+    <script defer src="./js/APIresponse.js"></script>
+    <script defer src="./js/auth.js"></script>
+    <script defer src="./js/menu.js"></script>
+    <script defer src="./js/listarUsuarios.js"></script>
+    <script defer src="./js/script.js"></script>
+    <script defer src="./js/musica.js"></script>
+    <script defer src="./js/fecha.js"></script>
+    <script defer src="./js/index.js"></script>
+
+
+</head>
+
+<body>
+    <div class="spiral-holes">
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+    </div>
+
+    <div class="red-margin"></div>
+
+    <div class="music-doodle" onclick="toggleMusic()">
+        <div class="music-icon">🎵</div>
+        <div class="music-status" id="musicStatus">play</div>
+    </div>
+
+    <audio id="backgroundMusic" loop>
+        <source src="./img/relaxing-lofi-music-royalty-free-no-copyright-274465.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="notebook-page">
+        <div class="page-header-top">
+            <button class="back-btn" onclick="redirigir('cuaderno-index.html')">Volver al inicio</button>
+            <div class="date-doodle" id="currentDate"></div>
+        </div>
+
+        <div class="profile-header">
+            <div class="profile-section">
+                <div class="polaroid-container">
+                    <img id="userPhoto" class="polaroid-img" src="" alt="Mi foto">
+                </div>
+
+                <div class="welcome-text">
+                    <h1>¡Hola, <span id="username">Estudiante</span>!</h1>
+                    <p>Bienvenido al CRUD de usuarios</p>
+                </div>
+            </div>
+            <button class="logout-btn privado" onclick="cerrarSesion('cuaderno-index.html')">Cerrar cuaderno</button>
+        </div>
+
+        <div class="category-header">
+            <div class="category-icon">🖍️</div>
+            <h1 class="category-title">CRUD</h1>
+            <p class="category-desc">
+                Aquí podrás modificar los datos de los usuarios y asignar o eliminar el rol de administrador
+            </p>
+        </div>
+    <div class="exercise-container">
+        <div class="exercise">
+            <h2 class="form-title">🔄 Datos del usuario</h2>
+            <div class="excercise-form" id="formDB">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" id="nombre" class="form-control">
+                
+                <label for="usuario" class="form-label">Usuario:</label>
+                <input type="text" id="usuario" class="form-control">
+                
+                <label for="password" class="form-label">Contraseña:</label>
+                <input type="password" id="password" class="form-control">
+                
+                <label for="rol" class="form-label">Rol:</label>
+                <select id="rol" class="form-control">
+                    <option value="user">user</option>
+                    <option value="admin">admin</option>
+                </select>
+                
+                <label for="imagen" class="form-label">Imagen:</label>
+                <input type="file" id="imagen" class="form-control" accept="image/*">
+                
+                <img id="preview" src="../../img/iconoPorDefecto.png" width="80px"
+                    style="border-radius: 10px; display: none;">
+            </div>
+            
+            <button class="general-btn" id="guardar">Guardar</button>
+            <button class="general-btn" id="guardarAPI">Guardar usuario de API</button>
+            <div id="mensaje" class="form-text" style="margin-top: 20px;"></div>
+        </div>
+        
+        <div class="exercise">
+            <h2 class="form-title">📋 Lista de Usuarios</h2>
+            <table id="tablaUsuarios">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Usuario</th>
+                        <th>Rol</th>
+                        <th>Imagen</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+</div>
+    </div>
+</body>
+
+</html>

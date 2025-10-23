@@ -14,11 +14,16 @@ formulario.addEventListener("submit", async (e) => {
         return;
     }
 
-    if (credencialCorrecta(usuario, password)) {
+    if (await credencialCorrecta(usuario, password)) {
         let usuarios = await leerIndexedDB();
-        usuarios.forEach(user => {
-            user.isLogged = (user.usuario === usuario);
-        });
+        for(const user of usuarios) {
+            if (user.usuario === usuario && user.password === password) {
+                user.isLogged = true;
+            } else {
+                user.isLogged = false;
+            }
+            await guardarUsuarioIndexedDB(user);
+        };
         mensaje.textContent = `✅ Bienvenido, ${usuario}. Redirigiendo...`;
         setTimeout(() => {
             window.location.href = "cuaderno-index.html";

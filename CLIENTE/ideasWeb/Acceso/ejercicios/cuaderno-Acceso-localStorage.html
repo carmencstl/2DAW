@@ -16,12 +16,17 @@
     <link href="../../estilos/cards.css" rel="stylesheet">
     <link href="../../estilos/content.css" rel="stylesheet">
     <link href="../../estilos/decorative.css" rel="stylesheet">
+    <script defer src="../../js/indexedDBOpen.js"></script>
+    <script defer src="../../js/indexedDBDelete.js"></script>
+    <script defer src="../../js/indexedDBRead.js"></script>
+    <script defer src="../../js/indexedDBSave.js"></script>
     <script defer src="../../js/fecha.js"></script>
     <script defer src="../../js/index.js"></script>
     <script defer src="../../js/musica.js"></script>
     <script defer src="../../js/menu.js"></script>
     <script defer src="../../js/auth.js"></script>
     <script defer src="js/localStorage.js"></script>
+
     </style>
 </head>
 
@@ -75,69 +80,69 @@
         </div>
 
         <div class="divider-doodle"></div>
- <div class="content-area">
-    <h2>📝 Objetivo del Ejercicio</h2>
-    <p>En este ejercicio guardaremos, mostraremos y borraremos un usuario con local Storage </p>
+        <div class="content-area">
+            <h2>📝 Objetivo del Ejercicio</h2>
+            <p>En este ejercicio guardaremos, mostraremos y borraremos un usuario con local Storage </p>
 
-    <div class="sticky-note blue">
-        <strong>💡 Nota Importante:</strong>
-        <p>Para este ejercicio necesitaremos usar el navegador Chrome.</p>
-    </div>
+            <div class="sticky-note blue">
+                <strong>💡 Nota Importante:</strong>
+                <p>Para este ejercicio necesitaremos usar el navegador Chrome.</p>
+            </div>
 
-    <h2>🔍 Desarrollo</h2>
+            <h2>🔍 Desarrollo</h2>
 
-    <div class="exercise">
-        <div class="excercise-form" id="formDB">
-            <h2>📂 Uso básico de LocalStorage</h2>
-            <p>Vamos a guardar, leer y borrar usuarios</p>
-            <label>Nombre</label>
-            <input type="text" id="clave">
-            <label>Clave</label>
-            <input type="text" id="valor">
-            <label class="form-label">Tu foto de perfil</label>
-            <input type="file" class="form-control" id="imagenPerfil" accept="image/*" required>
+            <div class="exercise">
+                <div class="excercise-form" id="formDB">
+                    <h2>📂 Uso básico de LocalStorage</h2>
+                    <p>Vamos a guardar, leer y borrar usuarios</p>
+                    <label>Nombre</label>
+                    <input type="text" id="clave">
+                    <label>Clave</label>
+                    <input type="text" id="valor">
+                    <label class="form-label">Tu foto de perfil</label>
+                    <input type="file" class="form-control" id="imagenPerfil" accept="image/*" required>
+                </div>
+            </div>
+
+            <button class="general-btn" id="guardar">Guardar usuario</button>
+            <button class="general-btn" id="mostrarUno">Mostrar usuario</button>
+            <button class="general-btn" id="mostrarTodos">Mostrar usuarios</button>
+            <button class="general-btn" id="borrar">Borrar usuario</button>
+
+            <div id="resultado" style="margin-top: 20px;">
+                <div id="mensajeError" style="display: none;" class="mensaje-error">
+                    <p id="textoError"></p>
+                </div>
+                <div id="mensajeExito" style="display: none;" class="mensaje-exito">
+                    <p id="textoExito"></p>
+                </div>
+                <div id="mensajeInfo" style="display: none;" class="mensaje-info">
+                    <p id="textoInfo"></p>
+                </div>
+                <div id="contenedorUsuarios" style="display: none;"></div>
+            </div>
+
+            <div class="sticky-note pink">
+                <strong>⚠️ ¡Atención!</strong>
+                <p>LocalStorage guarda datos de forma permanente en el navegador hasta que se borren manualmente.</p>
+            </div>
+
+            <div class="divider-doodle"></div>
+
+            <h2>✨ Conclusiones</h2>
+            <p>En este ejercicio hemos aprendido:</p>
+            <ul>
+                <li>Cómo guardar datos en LocalStorage</li>
+                <li>Cómo leer y mostrar usuarios guardados</li>
+                <li>Cómo borrar datos del LocalStorage</li>
+                <li>Buenas prácticas para almacenar información del cliente</li>
+            </ul>
+
+            <div class="sticky-note green">
+                <strong>✓ ¡Completado!</strong>
+                <p>Ya dominas el manejo de LocalStorage!</p>
+            </div>
         </div>
-    </div>
-    
-    <button class="general-btn" id="guardar">Guardar usuario</button>
-    <button class="general-btn" id="mostrarUno">Mostrar usuario</button>
-    <button class="general-btn" id="mostrarTodos">Mostrar usuarios</button>
-    <button class="general-btn" id="borrar">Borrar usuario</button>
-
-    <div id="resultado" style="margin-top: 20px;">
-        <div id="mensajeError" style="display: none;" class="mensaje-error">
-            <p id="textoError"></p>
-        </div>
-        <div id="mensajeExito" style="display: none;" class="mensaje-exito">
-            <p id="textoExito"></p>
-        </div>
-        <div id="mensajeInfo" style="display: none;" class="mensaje-info">
-            <p id="textoInfo"></p>
-        </div>
-        <div id="contenedorUsuarios" style="display: none;"></div>
-    </div>
-
-    <div class="sticky-note pink">
-        <strong>⚠️ ¡Atención!</strong>
-        <p>LocalStorage guarda datos de forma permanente en el navegador hasta que se borren manualmente.</p>
-    </div>
-    
-    <div class="divider-doodle"></div>
-    
-    <h2>✨ Conclusiones</h2>
-    <p>En este ejercicio hemos aprendido:</p>
-    <ul>
-        <li>Cómo guardar datos en LocalStorage</li>
-        <li>Cómo leer y mostrar usuarios guardados</li>
-        <li>Cómo borrar datos del LocalStorage</li>
-        <li>Buenas prácticas para almacenar información del cliente</li>
-    </ul>
-    
-    <div class="sticky-note green">
-        <strong>✓ ¡Completado!</strong>
-        <p>Ya dominas el manejo de LocalStorage!</p>
-    </div>
-</div> 
 </body>
 
 </html>

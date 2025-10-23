@@ -14,12 +14,13 @@
     <link href="estilos/headers.css" rel="stylesheet">
     <link href="estilos/cards.css" rel="stylesheet">
     <link href="estilos/decorative.css" rel="stylesheet">
+    <script defer src="js/APIcall.js"></script>
     <script defer src="js/musica.js"></script>
     <script defer src="js/fecha.js"></script>
     <script defer src="js/index.js"></script>
     <script defer src="js/indexedDBOpen.js"></script>
     <script defer src="js/indexedDBRead.js"></script>
-    <script defer src="js/indexedDBSave.js"></script>s
+    <script defer src="js/indexedDBSave.js"></script>
     <script defer src="js/menu.js"></script>
     <script defer src="js/auth.js"></script>
 
@@ -60,9 +61,12 @@
     <!-- PostIt -->
     <div class="sticky-reminder">
         <h3>¡Tip!</h3>
-        Haz clic en 🎵 para escuchar algo de música!
+        Haz clic en 🎵 para escuchar algo de música
     </div>
-
+    <div class="sticky-note fixed green">
+        <h3>Random english advice!</h3>
+        <div id="cita"></div>
+    </div>
     <div class="notebook-page">
         <div class="date-doodle" id="currentDate"></div>
         <div class="profile-header">
@@ -117,7 +121,7 @@
                 <span class="card-doodle">✎</span>
             </div>
 
-            <div class="exercise-card privado admin" onclick="redirigir('')">
+            <div class="exercise-card" id="admin" onclick="redirigir('cuaderno-crud.html')">
                 <div class="exercise-icon">👤</div>
                 <h3 class="exercise-number">CRUD</h3>
                 <p class="exercise-desc">Solo para administradores</p>

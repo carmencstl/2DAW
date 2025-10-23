@@ -1,23 +1,23 @@
 "use strict";
 
-let db;
+let dbEjer;
 
-function abrirBaseDatos() {
+function abrirBaseDatosEjer() {
     return new Promise((resolve, reject) => {
         const requestDB = indexedDB.open("UsuariosIDBejer", 1);
 
         requestDB.onupgradeneeded = (event) => {
-            db = event.target.result;
-            if (!db.objectStoreNames.contains("usuariosEjer")) {
-                const store = db.createObjectStore("usuariosEjer", { keyPath: "usuario" });
+            dbEjer = event.target.result;
+            if (!dbEjer.objectStoreNames.contains("usuariosEjer")) {
+                const store = dbEjer.createObjectStore("usuariosEjer", { keyPath: "usuario" });
                 store.createIndex("nombre", "nombre", { unique: false });
             }
         };
 
         requestDB.onsuccess = (event) => {
-            db = event.target.result;
+            dbEjer = event.target.result;
             console.log("✅ Base de datos abierta correctamente.");
-            resolve(db);
+            resolve(dbEjer);
         };
 
         requestDB.onerror = (event) => {

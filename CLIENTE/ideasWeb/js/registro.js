@@ -17,7 +17,7 @@ formulario.addEventListener("submit", async (e) => {
     }
 
     const bbddUsers = await leerIndexedDB();
-    const registrado = true;
+    let registrado = true;
 
     bbddUsers.forEach(user => {
         if (user.usuario === usuario) {

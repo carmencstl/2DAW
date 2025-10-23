@@ -1,12 +1,12 @@
 "use strict";
 
-async function borrarUsuarioIndexedDB(usuarioClave) {
+async function borrarUsuarioIndexedDBEjer(usuarioClave) {
     try {
 
-        if (!db) await abrirBaseDatos();
+        if (!dbEjer) await abrirBaseDatosEjer();
 
         return new Promise((resolve, reject) => {
-            const transaction = db.transaction("usuariosEjer", "readwrite");
+            const transaction = dbEjer.transaction("usuariosEjer", "readwrite");
             const store = transaction.objectStore("usuariosEjer");
             const requestBorrar = store.delete(usuarioClave);
 

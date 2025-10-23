@@ -58,7 +58,7 @@ function existeUsuario(clave) {
 } */
 
  async function credencialCorrecta(user, password) {
-    const usuarios = await indexedDBRead();
+    const usuarios = await leerIndexedDB();
     let esCorrecta = false;
 
     usuarios.forEach(usuario => {
@@ -99,11 +99,12 @@ function isLogged() {
     return false;
 }
 
-function cerrarSesion(url) {
-    const usuarios = getUsuarios();
-    for (let clave in usuarios) {
-        usuarios[clave].isLogged = false;
-    }
+async function cerrarSesion(url) {
+  let usuarios = await leerIndexedDB();
+        for(const user of usuarios) {
+            user.isLogged = "false";
+            await guardarUsuarioIndexedDB(user);
+        };
     setUsuarios(usuarios);
     window.location.href = url;
     cambiarMenu();

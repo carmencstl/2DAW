@@ -32,7 +32,7 @@ btnGuardar.addEventListener("click", async () => {
         imagen: imagenFinal, // recuerda, esto es un blob, INDEXDB HACE LA CONVERSION A STRING POR NOSOTROS
     }
 
-    await guardarUsuarioIndexedDB(user);
+    await guardarUsuarioIndexedDBEjer(user);
     listarUsuarios();
     
     //No me gustaba que se mantuvieran los values en los inputs una vez se actualizaban los datos del usuario
@@ -70,6 +70,6 @@ btnEsperar.addEventListener("click", async () => {
         password: 'dejameya',
         imagen: '../../img/iconoPorDefecto.png',
     };
-    await guardarUsuarioIndexedDB(user);
+    await guardarUsuarioIndexedDBEjer(user);
     listarUsuarios();
 })

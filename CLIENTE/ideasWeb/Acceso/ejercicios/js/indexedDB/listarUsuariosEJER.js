@@ -2,7 +2,7 @@
 
 async function listarUsuarios() {
     tabla.innerHTML = "";
-    const usuarios = await leerIndexedDB();
+    const usuarios = await leerIndexedDBEjer();
 
     if (usuarios.length === 0) {
 
@@ -41,7 +41,7 @@ async function listarUsuarios() {
         const btnBorrar = document.createElement("button");
         btnBorrar.innerHTML = `<img src="../../img/delete.png" width="22" height="22" />`;
         btnBorrar.addEventListener("click", async () => {
-            await borrarUsuarioIndexedDB(user.usuario);
+            await borrarUsuarioIndexedDBEjer(user.usuario);
             await listarUsuarios();
         });
         tdAcciones.appendChild(btnBorrar);
@@ -49,11 +49,12 @@ async function listarUsuarios() {
         const btnActualizar = document.createElement("button");
         btnActualizar.innerHTML = `<img src="../../img/update.png" width="22" height="22" />`;
         btnActualizar.addEventListener("click", async () => {
-            await borrarUsuarioIndexedDB(user.usuario);
+            await borrarUsuarioIndexedDBEjer(user.usuario);
 
             nombre.value = user.nombre;
             usuario.value = user.usuario;
             password.value = user.password;
+            
             imagen.value = null;
 
             imagenActual = user.imagen;
