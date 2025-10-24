@@ -15,15 +15,14 @@ formulario.addEventListener("submit", async (e) => {
     }
 
     if (await credencialCorrecta(usuario, password)) {
-        let usuarios = await leerIndexedDB();
-        for(const user of usuarios) {
-            if (user.usuario === usuario && user.password === password) {
-                user.isLogged = true;
-            } else {
-                user.isLogged = false;
-            }
+        //Uso esta funcion para no tener que recorrer todos los usuarios
+        //y que sea mas eficiente
+        const user = await leerUsuarioPorClave(usuario);
+        if (user) {
+            user.isLogged = true;
             await guardarUsuarioIndexedDB(user);
-        };
+        }
+
         mensaje.textContent = `✅ Bienvenido, ${usuario}. Redirigiendo...`;
         setTimeout(() => {
             window.location.href = "cuaderno-index.html";
