@@ -1,0 +1,46 @@
+"use strict";
+
+const formulario = document.getElementById("formRegistro");
+const mensaje = document.getElementById("mensaje");
+
+formulario.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const usuario = document.getElementById("usuario").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const nombre = document.getElementById("nombre").value.trim();
+    const file = document.getElementById("imagenPerfil").files[0];
+
+    if (!usuario || !password || !nombre) {
+        mensaje.textContent = "Por favor, rellena todos los campos.";
+        return true;
+    }
+
+    const bbddUsers = await leerIndexedDB();
+    let registrado = true;
+
+    //Comprueba que no haya usuarios repetidos
+    bbddUsers.forEach(user => {
+        if (user.usuario === usuario) {
+            registrado = false;
+        }
+    });
+
+    if (registrado) {
+        const user = {
+            nombre: nombre,
+            usuario: usuario,
+            password: password,
+            imagen: file,
+            tipo: "user",
+            isLogged: "false"
+        };
+        await guardarUsuarioIndexedDB(user);
+        mensaje.textContent = `✅ Usuario ${usuario} registrado correctamente. Redirigiendo a login...`;
+        setTimeout(() => {
+            window.location.href = "cuaderno-login.html";
+        }, 2000);
+    } else {
+        mensaje.textContent = "❌ El usuario ya existe. Por favor, elige otro.";
+    }
+});
