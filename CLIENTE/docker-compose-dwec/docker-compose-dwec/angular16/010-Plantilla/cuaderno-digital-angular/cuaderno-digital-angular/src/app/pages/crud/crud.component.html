@@ -1,0 +1,149 @@
+<div class="spiral-holes">
+  <div class="hole"></div>
+  <div class="hole"></div>
+  <div class="hole"></div>
+  <div class="hole"></div>
+  <div class="hole"></div>
+  <div class="hole"></div>
+  <div class="hole"></div>
+  <div class="hole"></div>
+  <div class="hole"></div>
+  <div class="hole"></div>
+</div>
+
+<div class="red-margin"></div>
+
+<div class="music-doodle" (click)="toggleMusic()">
+  <div class="music-icon">🎵</div>
+  <div class="music-status">{{ musicStatus }}</div>
+</div>
+
+<audio #backgroundMusic loop>
+  <source src="assets/img/relaxing-lofi-music-royalty-free-no-copyright-274465.mp3" type="audio/mpeg">
+</audio>
+
+<div class="notebook-page">
+  <div class="page-header-top">
+    <button class="back-btn" (click)="navegarA('/')">Volver al inicio</button>
+    <div class="date-doodle">{{ currentDate }}</div>
+  </div>
+
+  <div class="profile-header">
+    <div class="profile-section">
+      <div class="polaroid-container">
+        <img 
+          class="polaroid-img" 
+          [src]="currentUser?.imagen || 'assets/img/iconoPorDefecto.png'" 
+          alt="Mi foto"
+        >
+      </div>
+      <div class="welcome-text">
+        <h1>¡Hola, <span>{{ currentUser?.nombre || 'Estudiante' }}</span>!</h1>
+        <p>Bienvenido al CRUD de usuarios</p>
+      </div>
+    </div>
+    <button class="logout-btn" (click)="cerrarSesion()">Cerrar cuaderno</button>
+  </div>
+
+  <div class="category-header">
+    <div class="category-icon">🖍️</div>
+    <h1 class="category-title">CRUD</h1>
+    <p class="category-desc">
+      Aquí podrás modificar los datos de los usuarios y asignar o eliminar el rol de administrador
+    </p>
+  </div>
+
+  <div class="exercise-container">
+    <div class="exercise">
+      <h2 class="form-title">🔄 Datos del usuario</h2>
+      <div class="excercise-form">
+        <label for="nombre" class="form-label">Nombre:</label>
+        <input 
+          type="text" 
+          id="nombre" 
+          class="form-control" 
+          [(ngModel)]="nombre"
+        >
+        
+        <label for="usuario" class="form-label">Usuario:</label>
+        <input 
+          type="text" 
+          id="usuario" 
+          class="form-control" 
+          [(ngModel)]="usuario"
+        >
+        
+        <label for="password" class="form-label">Contraseña:</label>
+        <input 
+          type="password" 
+          id="password" 
+          class="form-control" 
+          [(ngModel)]="password"
+        >
+        
+        <label for="rol" class="form-label">Rol:</label>
+        <select id="rol" class="form-control" [(ngModel)]="rol">
+          <option value=""></option>
+          <option value="user">user</option>
+          <option value="admin">admin</option>
+        </select>
+        
+        <label for="imagen" class="form-label">Imagen:</label>
+        <input 
+          type="file" 
+          id="imagen" 
+          class="form-control" 
+          (change)="onFileSelected($event)"
+          accept="image/*"
+        >
+        
+        <img 
+          [src]="previewUrl" 
+          width="80px"
+          style="border-radius: 10px; margin-top: 10px;"
+        >
+      </div>
+      
+      <button class="general-btn" (click)="guardar()">Guardar</button>
+      <button class="general-btn" (click)="guardarUsuarioAPI()">Guardar usuario de API</button>
+      <div *ngIf="mensaje" class="form-text" style="margin-top: 20px;">{{ mensaje }}</div>
+    </div>
+    
+    <div class="exercise">
+      <h2 class="form-title">📋 Lista de Usuarios</h2>
+      <table id="tablaUsuarios">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Usuario</th>
+            <th>Rol</th>
+            <th>Imagen</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of usuarios">
+            <td>{{ user.nombre }}</td>
+            <td>{{ user.usuario }}</td>
+            <td>{{ user.tipo }}</td>
+            <td>
+              <img 
+                [src]="user.imagen || 'assets/img/iconoPorDefecto.png'" 
+                width="40px" 
+                style="border-radius: 5px;"
+              >
+            </td>
+            <td>
+              <button class="btn-edit" (click)="editarUsuario(user)">
+                <img src="assets/img/update.png" width="20px">
+              </button>
+              <button class="btn-delete" (click)="eliminarUsuario(user.usuario)">
+                <img src="assets/img/delete.png" width="20px">
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

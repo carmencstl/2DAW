@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  cuaderno-digital-angular:
+    build: .
+    container_name: cuaderno-digital-angular
+    ports:
+      - "4216:4216"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: npm run start:docker

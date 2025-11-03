@@ -1,0 +1,235 @@
+
+/* Header de página con fecha */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.page-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+/* Fecha */
+.date-doodle {
+    font-family: 'Caveat', cursive;
+    font-size: 1.6rem;
+    color: #666;
+    text-align: right;
+}
+
+
+.page-header-top .date-doodle {
+    margin-left: auto;
+    margin-bottom: 0;
+}
+
+/* Título principal de la  página */
+.main-title {
+    font-family: 'Caveat', cursive;
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: center;
+    position: relative;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.main-title::before {
+    content: '✨';
+    position: absolute;
+    left: -50px;
+    top: 10px;
+    font-size: 2.5rem;
+    transform: rotate(-15deg);
+}
+
+.main-title::after {
+    content: '✨';
+    position: absolute;
+    right: -50px;
+    top: 10px;
+    font-size: 2.5rem;
+    transform: rotate(15deg);
+}
+
+/* Subtítulo */
+.subtitle {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.5rem;
+    color: #7f8c8d;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* Subrayado decorativo */
+.underline-doodle {
+    width: 300px;
+    height: 3px;
+    background: #3498db;
+    margin: 20px auto;
+    position: relative;
+    transform: rotate(-0.5deg);
+}
+
+.underline-doodle.green {
+    background: #27ae60;
+}
+
+/* Header de perfil con foto */
+.profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    gap: 30px;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #3498db;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Foto estilo polaroid */
+.polaroid-container {
+    background: white;
+    padding: 12px;
+    padding-bottom: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: rotate(-3deg);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.polaroid-container::before {
+    content: '📌';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 2rem;
+    transform: rotate(30deg);
+}
+
+.polaroid-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+}
+
+.welcome-text h1 {
+    font-family: 'Caveat', cursive;
+    font-size: 3rem;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.welcome-text p {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.3rem;
+    color: #7f8c8d;
+}
+
+/* Header de categoría */
+.category-header {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border-left: 6px solid #9b59b6;
+    margin-bottom: 50px;
+    position: relative;
+    text-align: center;
+}
+
+.category-header::before {
+    content: '📎';
+    position: absolute;
+    top: -15px;
+    right: 30px;
+    font-size: 2.5rem;
+    transform: rotate(-30deg);
+}
+
+.category-icon {
+    font-size: 5rem;
+    margin-bottom: 20px;
+}
+
+.category-title {
+    font-family: 'Caveat', cursive;
+    font-size: 4rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.category-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-1deg);
+    width: 60%;
+    height: 4px;
+    background: #9b59b6;
+}
+
+.category-desc {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.4rem;
+    color: #7f8c8d;
+    line-height: 1.6;
+}
+
+/* Títulos de sección */
+.section-title {
+    font-family: 'Caveat', cursive;
+    font-size: 3.5rem;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-1deg);
+    width: 60%;
+    height: 3px;
+    background: #3498db;
+}
+
+/* Atajo */
+.breadcrumb-custom {
+    font-family: 'Caveat', cursive;
+    font-size: 1.3rem;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+.breadcrumb-custom a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.breadcrumb-custom a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,103 @@
+<div class="spiral-holes">
+  <div class="hole"></div>
+  <div class="hole"></div>
+  <div class="hole"></div>
+  <div class="hole"></div>
+  <div class="hole"></div>
+  <div class="hole"></div>
+  <div class="hole"></div>
+  <div class="hole"></div>
+  <div class="hole"></div>
+  <div class="hole"></div>
+</div>
+
+<div class="red-margin"></div>
+
+<div class="music-doodle" (click)="toggleMusic()">
+  <div class="music-icon">🎵</div>
+  <div class="music-status">{{ musicStatus }}</div>
+</div>
+
+<audio #backgroundMusic loop>
+  <source src="assets/img/relaxing-lofi-music-royalty-free-no-copyright-274465.mp3" type="audio/mpeg">
+</audio>
+
+<div class="sticker sticker-1">📚</div>
+<div class="sticker sticker-2">✏️</div>
+<div class="sticker sticker-3">💻</div>
+
+<div class="sticky-note fixed blue">
+  <strong>¡Bienvenido!</strong><br><br>
+  Crea tu cuenta para empezar<br>
+  tu viaje en JavaScript 🚀
+</div>
+
+<div class="notebook-page">
+  <div class="page-header">
+    <button class="back-btn" (click)="navegarA('/')">Volver al inicio</button>
+    <div class="date-doodle">{{ currentDate }}</div>
+  </div>
+
+  <h1 class="main-title">Mi Cuaderno Digital</h1>
+  <p class="subtitle">~ Crea tu cuenta y empieza a aprender ~</p>
+  <div class="underline-doodle"></div>
+
+  <div class="form-card">
+    <h2 class="form-title">Registrarse</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <label class="form-label">Tu nombre completo</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          [(ngModel)]="nombre"
+          name="nombre" 
+          placeholder="Nombre y apellidos" 
+          required
+        >
+      </div>
+      <div class="mb-4">
+        <label class="form-label">Tu nombre de usuario</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          [(ngModel)]="usuario"
+          name="usuario" 
+          placeholder="Elige un nombre de usuario" 
+          required
+        >
+      </div>
+      <div class="mb-4">
+        <label class="form-label">Tu contraseña</label>
+        <input 
+          type="password" 
+          class="form-control" 
+          [(ngModel)]="password"
+          name="password" 
+          placeholder="Elige una contraseña segura" 
+          required
+        >
+      </div>
+      <div class="mb-4">
+        <label class="form-label">Tu foto de perfil (opcional)</label>
+        <input 
+          type="file" 
+          class="form-control" 
+          (change)="onFileSelected($event)"
+          accept="image/*"
+        >
+        <img 
+          *ngIf="previewUrl" 
+          [src]="previewUrl" 
+          class="preview-img" 
+          style="max-width: 100px; border-radius: 10px; margin-top: 10px;"
+        >
+      </div>
+      <button type="submit" class="btn-form">Registrarse</button>
+    </form>
+    <div class="toggle-text">
+      ¿Ya tienes cuenta? <a (click)="navegarA('/login')" style="cursor: pointer">Inicia sesión aquí</a>
+    </div>
+    <div class="toggle-text" *ngIf="mensaje">{{ mensaje }}</div>
+  </div>
+</div>

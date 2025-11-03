@@ -1,6 +1,6 @@
 <?php
-/* require_once "libro.php"; */
-require_once "pelicula.php";
+/* require_once "Libro.php"; */
+require_once "Pelicula.php";
 
 /* $persona = new Persona("Juan", 30); */
 /* $libro = new Libro("Almendra", "Pablo Beentjes", "28-10-2025", 50);

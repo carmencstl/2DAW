@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - Mi Cuaderno</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Caveat:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="../estilos/base.css" rel="stylesheet">
+    <link href="../estilos/notebook-layout.css" rel="stylesheet">
+    <link href="../estilos/buttons.css" rel="stylesheet">
+    <link href="../estilos/headers.css" rel="stylesheet">
+    <link href="../estilos/cards.css" rel="stylesheet">
+    <link href="../estilos/decorative.css" rel="stylesheet">
+    <script defer src="../js/indexedDBOpen.js"></script>
+    <script defer src="../js/indexedDBDelete.js"></script>
+    <script defer src="../js/indexedDBRead.js"></script>
+    <script defer src="../js/indexedDBSave.js"></script>
+    <script defer src="../js/musica.js"></script>
+    <script defer src="../js/menu.js"></script>
+    <script defer src="../js/auth.js"></script>
+</head>
+<body>
+    <div class="spiral-holes">
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+    </div>
+    
+    <div class="red-margin"></div>
+    
+    <div class="music-doodle" onclick="toggleMusic()">
+        <div class="music-icon">🎵</div>
+        <div class="music-status" id="musicStatus">play</div>
+    </div>
+    
+    <audio id="backgroundMusic" loop>
+        <source src="../img/relaxing-lofi-music-royalty-free-no-copyright-274465.mp3" type="audio/mpeg">
+    </audio>
+    
+    <div class="notebook-page">
+           <div class="page-header-top">
+            <button class="back-btn" onclick="redirigir('../cuaderno-index.html')">Volver al inicio</button>
+            <div class="date-doodle" id="currentDate"></div>
+        </div>
+        <div class="profile-header">
+            <div class="profile-section">
+                <div class="polaroid-container">
+                    <img id="userPhoto" class="polaroid-img" src="" alt="Mi foto">
+                </div>
+                <div class="welcome-text">
+                    <h1>¡Hola, <span id="username">Estudiante</span>!</h1>
+                    <p>Ejercicios</p>
+                </div>
+            </div>
+            <button class="logout-btn privado" onclick="cerrarSesion('../cuaderno-index.html')">Cerrar cuaderno</button>
+        </div>
+        <div class="category-header">
+            <div class="category-icon">💡</div>
+            <h1 class="category-title">DOM</h1>
+            <p class="category-desc">
+                Aquí se encuentran todos mis ejercicios sobre el manejo del DOM.
+            </p>
+        </div>
+        
+        <div class="sticky-note">
+            <strong>💻 Sobre esta sección:</strong>
+            <p>Con la nueva web no me ha dado tiempo a meter los ejercicios del DOM!</p>
+        </div>
+        
+        <h2 class="section-title">📝 Lista de Ejercicios</h2>
+        
+  <!--       <div class="exercises-list">
+            <div class="exercise-item" onclick="redirigir('ejercicios/cuaderno-DOM-ejer1.html')">
+                <div class="exercise-number">1</div>
+                <div class="exercise-content">
+                    <h3 class="exercise-title">Ejercicio 1</h3>
+                    <p class="exercise-description">
+                       No se
+                    </p>
+                    <div class="exercise-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">DOM</span>
+                        <span class="tag">ES6</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="exercise-item" onclick="redirigir('ejercicios/cuaderno-DOM-ejer2.html')">
+                <div class="exercise-number">2</div>
+                <div class="exercise-content">
+                    <h3 class="exercise-title">Ejercicio 2</h3>
+                    <p class="exercise-description">
+                        No se
+                    </p>
+                    <div class="exercise-tags">
+                        <span class="tag">Objetos</span>
+                        <span class="tag"></span>
+                        <span class="tag"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="exercise-item" onclick="redirigir('ejercicios/cuaderno-DOM-ejer3.html')">
+                <div class="exercise-number">3</div>
+                <div class="exercise-content">
+                    <h3 class="exercise-title">Ejercicio 3</h3>
+                    <p class="exercise-description">
+                        No se
+                    </p>
+                    <div class="exercise-tags">
+                        <span class="tag">Arrays</span>
+                        <span class="tag">()</span>
+                        <span class="tag">()</span>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</body>
+</html>

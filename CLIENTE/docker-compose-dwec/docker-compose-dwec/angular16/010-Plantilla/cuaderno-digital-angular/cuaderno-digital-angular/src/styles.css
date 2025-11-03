@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Caveat:wght@400;600;700&family=Permanent+Marker&display=swap');
+
+/* Importar todos los estilos de la aplicación */
+@import 'assets/estilos/base.css';
+@import 'assets/estilos/notebook-layout.css';
+@import 'assets/estilos/buttons.css';
+@import 'assets/estilos/headers.css';
+@import 'assets/estilos/cards.css';
+@import 'assets/estilos/decorative.css';
+@import 'assets/estilos/forms.css';
+@import 'assets/estilos/content.css';
+@import 'assets/estilos/crud-table-notebook.css';
+
+/* Estilos base globales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Patrick Hand', cursive;
+  overflow-x: hidden;
+}
+

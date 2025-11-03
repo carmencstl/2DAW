@@ -1,5 +1,5 @@
 <?php
-function miFiltro(array $datos, $function): array
+function miFiltro(array $datos, callable $function): array
 {       $array = [];
         foreach($datos as $dato){
 
