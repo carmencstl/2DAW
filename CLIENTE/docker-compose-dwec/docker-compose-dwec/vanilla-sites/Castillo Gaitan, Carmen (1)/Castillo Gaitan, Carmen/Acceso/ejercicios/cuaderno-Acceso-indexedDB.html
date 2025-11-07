@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndexedDB - Ejercicio 3</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Caveat:wght@400;600;700&family=Permanent+Marker&display=swap"
+        rel="stylesheet">
+    <link href="../../estilos/base.css" rel="stylesheet">
+    <link href="../../estilos/notebook-layout.css" rel="stylesheet">
+    <link href="../../estilos/buttons.css" rel="stylesheet">
+    <link href="../../estilos/headers.css" rel="stylesheet">
+    <link href="../../estilos/cards.css" rel="stylesheet">
+    <link href="../../estilos/content.css" rel="stylesheet">
+    <link href="../../estilos/decorative.css" rel="stylesheet">
+    <script defer src="../../js/indexedDBOpen.js"></script>
+    <script defer src="../../js/indexedDBDelete.js"></script>
+    <script defer src="../../js/indexedDBRead.js"></script>
+    <script defer src="../../js/indexedDBSave.js"></script>
+    <script defer src="../../js/musica.js"></script>
+    <script defer src="../../js/menu.js"></script>
+    <script defer src="../../js/auth.js"></script>
+    <script defer src="./js/indexedDB/indexedDBDeleteEJER.js"></script>
+    <script defer src="./js/indexedDB/indexedDBOpenEJER.js"></script>
+    <script defer src="./js/indexedDB/indexedDBReadEJER.js"></script>
+    <script defer src="./js/indexedDB/indexedDBSaveEJER.js"></script>
+    <script defer src="./js/indexedDB/listarUsuariosEJER.js"></script>
+    <script defer src="./js/indexedDB/scriptEJER.js"></script>
+    </style>
+</head>
+
+<body>
+    <div class="spiral-holes">
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+    </div>
+    <div class="red-margin"></div>
+    <div class="music-doodle" onclick="toggleMusic()">
+        <div class="music-icon">🎵</div>
+        <div class="music-status" id="musicStatus">play</div>
+    </div>
+    <audio id="backgroundMusic" loop>
+        <source src="../../img/relaxing-lofi-music-royalty-free-no-copyright-274465.mp3" type="audio/mpeg">
+    </audio>
+    <div class="notebook-page">
+        <div class="page-header-top">
+            <div class="date-doodle" id="currentDate"></div>
+        </div>
+        <div class="profile-header">
+            <div class="profile-section">
+                <div class="polaroid-container">
+                    <img id="userPhoto" class="polaroid-img" src="" alt="Mi foto">
+                </div>
+                <div class="welcome-text">
+                    <h1>¡Hola, <span id="username">Estudiante</span>!</h1>
+                    <p>Aquí está tu ejercicio</p>
+                </div>
+            </div>
+            <button class="logout-btn" onclick="cerrarSesion('../../cuaderno-index.html')">Cerrar cuaderno</button>
+        </div>
+        <div class="breadcrumb-custom">
+            <a href="../../cuaderno-index.html">📚 Índice</a> → <a href="../cuaderno-Acceso.html">🔐 Acceso</a> →
+            Ejercicio
+            3
+        </div>
+        <div class="exercise-header">
+            <div class="exercise-icon">📋</div>
+            <h1 class="exercise-title">IndexedDB - Ejercicio 3</h1>
+            <p class="exercise-subtitle">~Abrir y cerrar bases de datos, leer, guardar y mostrar datos y demostración de
+                asincronía~</p>
+        </div>
+
+        <div class="divider-doodle"></div>
+        <div class="content-area">
+            <h2>📝 Objetivo del Ejercicio</h2>
+            <p>
+                En este ejercicio aprenderemos a abrir y cerrar la base de datos y a guardar correctamente imágenes,
+                además de
+                hacer un CRUD de usuarios.
+            </p>
+
+            <div class="sticky-note blue">
+                <strong>💡 Nota Importante:</strong>
+                <p>*El botón SIMULAR ESPERA (20s) simula un tiempo de carga (de 20 segundos).
+                    Con ello comprobamos que la programación asíncrona evita el bloqueo de nuestra web, permitiendo
+                    seguir rellenando el formulario y almacenando los datos.</p>
+            </div>
+
+            <h2>🔍 Desarrollo</h2>
+
+            <div class="exercise-container">
+                <div class="exercise">
+                    <div class="excercise-form" id="formDB">
+                        <h2>📋 Uso básico de IndexedDB</h2>
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre"><br><br>
+                        <label for="usuario">Usuario:</label>
+                        <input type="text" id="usuario"><br><br>
+                        <label for="password">Contraseña:</label>
+                        <input type="password" id="password"><br><br>
+                        <label for="imagen">Imagen:</label>
+                        <input type="file" id="imagen" accept="image/*"><br><br>
+                        <img id="preview" src="../../img/iconoPorDefecto.png" width="80px"
+                            style="border-radius: 10px; display: none;"><br><br>
+                    </div>
+                    <button class="general-btn" id="guardar">Guardar</button>
+                    <button class="general-btn" id="esperar">Simular pausa</button>
+                    <div id="mensaje" style="margin-top: 20px;"></div>
+                </div>
+                <div class="exercise">
+                    <div class="excercise-form">
+                    </div>
+                    <h2>Lista de Usuarios</h2>
+                    <table id="tablaUsuarios">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Usuario</th>
+                                <th>Imagen</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="sticky-note pink">
+                <strong>⚠️ ¡Atención!</strong>
+                <p>Para este ejercicio he abierto una base de datos propia para no mezclar los usuarios de ejemplo con
+                    los propios de la página web
+                </p>
+            </div>
+            <h2>✨ Conclusiones</h2>
+            <p>En este ejercicio hemos aprendido:</p>
+            <ul>
+                <li>Crear y guardar datos localmente usando IndexedDB.</li>
+                <li>Usar indexedDB.open() para definir la base de datos y sus almacenes.</li>
+                <li>Leer y mostrar la información almacenada, además de actualizarla.</li>
+                <li>Eliminar registros.</li>
+            </ul>
+            <div class="sticky-note green">
+                <strong>✓ ¡Completado!</strong>
+                <p>Ya dominas el manejo de IndexedDB!</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
